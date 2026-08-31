@@ -1,0 +1,22 @@
+# Evaluating AI Agents — course pin set.
+# Installed and imported clean 30 Aug 2026. Do not float these: a minor bump in
+# langchain-core changes whether reasoning_effort is a standard parameter, and the
+# floor is set by langchain-google-genai (>=1.6.1), not by langchain itself.
+
+langchain==1.3.16
+langchain-core==1.6.1
+langgraph==1.2.11
+langgraph-prebuilt==1.1.0
+langsmith==0.11.1
+langchain-tavily==0.2.18
+
+# Providers. Install the one you use; extras are harmless.
+langchain-anthropic==1.6.1
+anthropic==0.125.0
+langchain-openai==1.6.0
+# Verified 30 Aug 2026. NOTE: this package is why langchain-core is pinned 1.6.1
+# and not 1.6.0 — it requires >=1.6.1, and with 1.6.0 pip resolves NOTHING at all.
+langchain-google-genai==4.3.7
+
+pandas>=2.2
+python-dotenv>=1.0
