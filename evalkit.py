@@ -67,6 +67,7 @@ DATASET = "s4-deep-research-eval"
 #     or traces land silently in `default` with no error at all.
 # ==========================================================================
 
+
 def env_setup(project: str = PROJECT) -> str:
     """Set the LangSmith project and bust the lru_cache. Returns resolved name."""
     os.environ["LANGSMITH_TRACING"] = "true"
@@ -147,7 +148,7 @@ PROVIDER: Provider = os.environ.get("COURSE_PROVIDER", "anthropic")  # type: ign
 # Anything that actually needs a model calls get_chat(). Everything else --
 # every rule-based evaluator, the whole discrimination matrix -- does not.
 _CHAT = None
-EFFORT_PINNED: bool | None = None       # None = not determined yet
+EFFORT_PINNED: bool | None = None  # None = not determined yet
 
 
 def get_chat(provider: Provider | None = None, effort: str | None = EFFORT_FLOOR):
@@ -183,6 +184,7 @@ def _tavily():
     global _TAVILY
     if _TAVILY is None:
         from langchain_tavily import TavilySearch
+
         _TAVILY = TavilySearch(max_results=3)
     return _TAVILY
 
@@ -233,6 +235,7 @@ def build_agent(chat=None, tools=None, system_prompt: str | None = None):
 #     were the harness reading the wrong field -- not the agent misbehaving.
 # ==========================================================================
 
+
 def final_text(result: dict) -> str:
     """Gotcha #9: a LangGraph root's `outputs` is the whole message list, not
     the answer, and it carries usage_metadata. Dump it to text for a
@@ -256,8 +259,12 @@ def as_messages(result: dict) -> list[dict]:
     out: list[dict] = []
     for m in (result or {}).get("messages", []):
         mtype = getattr(m, "type", None) or getattr(m, "role", "assistant")
-        role = {"human": "user", "ai": "assistant", "tool": "tool",
-                "system": "system"}.get(mtype, mtype)
+        role = {
+            "human": "user",
+            "ai": "assistant",
+            "tool": "tool",
+            "system": "system",
+        }.get(mtype, mtype)
         text = getattr(m, "text", None)
         if text is None:
             content = getattr(m, "content", m)
@@ -339,6 +346,7 @@ def make_target(agent=None) -> Callable[[dict], dict]:
 
 # ---- 4a. OUTCOME.  The decoration.  Ships deliberately weak. --------------
 
+
 def outcome_keyword(outputs: dict, reference_outputs: dict) -> dict:
     """Does the answer contain every required keyword?
 
@@ -360,6 +368,7 @@ def outcome_keyword(outputs: dict, reference_outputs: dict) -> dict:
 
 # ---- 4b. TOOL CORRECTNESS.  Students write the predicate. -----------------
 
+
 def tool_correctness(outputs: dict, reference_outputs: dict) -> dict:
     """Did the agent use the tool the task actually needed?
 
@@ -377,12 +386,15 @@ def tool_correctness(outputs: dict, reference_outputs: dict) -> dict:
     return {
         "key": "tool_correctness",
         "score": not missing and not wrong,
-        "comment": (f"used={sorted(used)} missing={sorted(missing)} "
-                    f"forbidden_used={sorted(wrong)}"),
+        "comment": (
+            f"used={sorted(used)} missing={sorted(missing)} "
+            f"forbidden_used={sorted(wrong)}"
+        ),
     }
 
 
 # ---- 4c. TRAJECTORY.  Pre-built; read, not written. ----------------------
+
 
 def _norm_query(args: dict) -> str:
     q = (args or {}).get("query") or (args or {}).get("expression") or ""
@@ -436,8 +448,11 @@ def trajectory_match(outputs: dict, reference_outputs: dict) -> dict:
     """
     ref = reference_outputs.get("expected_trajectory")
     if not ref:
-        return {"key": "trajectory_match", "score": None,
-                "comment": "no reference trajectory for this example - skipped"}
+        return {
+            "key": "trajectory_match",
+            "score": None,
+            "comment": "no reference trajectory for this example - skipped",
+        }
 
     mode = reference_outputs.get("trajectory_match_mode", "superset")
     got = [tc["name"] for tc in outputs.get("tool_calls", [])]
@@ -452,8 +467,11 @@ def trajectory_match(outputs: dict, reference_outputs: dict) -> dict:
     else:  # superset
         ok = set(ref) <= set(got)
 
-    return {"key": "trajectory_match", "score": ok,
-            "comment": f"mode={mode} got={got} ref={ref}"}
+    return {
+        "key": "trajectory_match",
+        "score": ok,
+        "comment": f"mode={mode} got={got} ref={ref}",
+    }
 
 
 # ---- 4d. THE JUDGE.  Hand-rolled, twelve lines, no new dependency. --------
@@ -497,12 +515,14 @@ def make_groundedness_judge(chat=None, feedback_key: str = "groundedness"):
 
     def groundedness(inputs: dict, outputs: dict) -> dict:
         evidence = "\n\n---\n\n".join(outputs.get("evidence", []) or [])[:6000]
-        msg = chat.invoke(JUDGE_PROMPT.format(
-            question=inputs.get("question", ""),
-            evidence=evidence or "(the agent retrieved nothing)",
-            answer=outputs.get("answer", ""),
-        ))
-        verdict = msg.text.strip()          # gotcha #2: .text, never .content
+        msg = chat.invoke(
+            JUDGE_PROMPT.format(
+                question=inputs.get("question", ""),
+                evidence=evidence or "(the agent retrieved nothing)",
+                answer=outputs.get("answer", ""),
+            )
+        )
+        verdict = msg.text.strip()  # gotcha #2: .text, never .content
         return {
             "key": feedback_key,
             "score": verdict.upper().startswith("GROUNDED"),
@@ -555,6 +575,7 @@ BLIND_BY_DESIGN: set[str] = {"outcome_keyword"}
 #     still say when nobody wrote down the right answer.
 # ==========================================================================
 
+
 def walk_tool_spans(run, in_tool: bool = False, acc: list | None = None) -> list:
     """Collect OUTERMOST tool spans only.
 
@@ -566,7 +587,7 @@ def walk_tool_spans(run, in_tool: bool = False, acc: list | None = None) -> list
     acc = [] if acc is None else acc
     if getattr(run, "run_type", None) == "tool" and not in_tool:
         acc.append(run)
-    for child in (getattr(run, "child_runs", None) or []):
+    for child in getattr(run, "child_runs", None) or []:
         walk_tool_spans(child, in_tool or run.run_type == "tool", acc)
     return acc
 
@@ -604,23 +625,32 @@ def online_empty_retrieval(run) -> dict:
     spans = walk_tool_spans(run)
     searches = [s for s in spans if (s.name or "").startswith("web_search")]
     if not searches:
-        return {"key": "online_empty_retrieval", "score": None,
-                "comment": "no search spans - rule does not apply"}
+        return {
+            "key": "online_empty_retrieval",
+            "score": None,
+            "comment": "no search spans - rule does not apply",
+        }
     empty = 0
     for s in searches:
         body = unwrap(s.outputs)
         text = body if isinstance(body, str) else json.dumps(body or "")
         if text.strip() in ("", "[]", "{}", "null", '""'):
             empty += 1
-    return {"key": "online_empty_retrieval", "score": empty < len(searches),
-            "comment": f"{empty}/{len(searches)} searches returned empty"}
+    return {
+        "key": "online_empty_retrieval",
+        "score": empty < len(searches),
+        "comment": f"{empty}/{len(searches)} searches returned empty",
+    }
 
 
 def online_tool_budget(run, budget: int = 4) -> dict:
     """ONLINE. Runaway detection. Session 9 turns this into a cost argument."""
     n = len(walk_tool_spans(run))
-    return {"key": "online_tool_budget", "score": n <= budget,
-            "comment": f"{n} outermost tool spans (budget {budget})"}
+    return {
+        "key": "online_tool_budget",
+        "score": n <= budget,
+        "comment": f"{n} outermost tool spans (budget {budget})",
+    }
 
 
 ONLINE_EVALUATORS: list[Callable] = [online_empty_retrieval, online_tool_budget]
@@ -630,8 +660,10 @@ ONLINE_EVALUATORS: list[Callable] = [online_empty_retrieval, online_tool_budget]
 # 6.  Reading a trace back.  Only needed for the ONLINE path.
 # ==========================================================================
 
-def find_trace_root(client, since, project: str = PROJECT, attempts: int = 8,
-                    base_delay: float = 1.5):
+
+def find_trace_root(
+    client, since, project: str = PROJECT, attempts: int = 8, base_delay: float = 1.5
+):
     """Ask LangSmith which run is the root. Do not work it out locally.
 
     Gotcha #17: collect_runs() returns FOUR parentless fragments for one
@@ -642,9 +674,12 @@ def find_trace_root(client, since, project: str = PROJECT, attempts: int = 8,
     for attempt in range(attempts):
         try:
             with warnings.catch_warnings():
-                warnings.simplefilter("ignore")   # list_runs deprecation
-                runs = list(client.list_runs(project_name=project, is_root=True,
-                                             start_time=since, limit=10))
+                warnings.simplefilter("ignore")  # list_runs deprecation
+                runs = list(
+                    client.list_runs(
+                        project_name=project, is_root=True, start_time=since, limit=10
+                    )
+                )
         except Exception:
             runs = []
         if runs:
@@ -653,8 +688,9 @@ def find_trace_root(client, since, project: str = PROJECT, attempts: int = 8,
     return None
 
 
-def read_run_when_ready(client, run_id, *, min_spans: int = 2, attempts: int = 8,
-                        base_delay: float = 1.5):
+def read_run_when_ready(
+    client, run_id, *, min_spans: int = 2, attempts: int = 8, base_delay: float = 1.5
+):
     """Gotcha #16: a flushed run is not a readable run, and read_run RAISES
     rather than returning None. There are two independent waits -- does it
     exist yet, and has the tree finished filling in -- so retry on the
@@ -682,11 +718,15 @@ def read_run_when_ready(client, run_id, *, min_spans: int = 2, attempts: int = 8
         time.sleep(base_delay * (attempt + 1))
 
     if run is None:
-        note = (f"run {run_id} never appeared after {attempts} attempts - "
-                "ingestion lag, wrong project, or a key without write access")
+        note = (
+            f"run {run_id} never appeared after {attempts} attempts - "
+            "ingestion lag, wrong project, or a key without write access"
+        )
     elif count_spans(run) < min_spans:
-        note = (f"root {run_id} came back with no children. If the LangSmith UI "
-                "shows a tree here, the wrong run id was resolved")
+        note = (
+            f"root {run_id} came back with no children. If the LangSmith UI "
+            "shows a tree here, the wrong run id was resolved"
+        )
     return run, note
 
 
@@ -694,6 +734,7 @@ def flush_traces() -> None:
     """Gotcha #6: traces send on a background thread."""
     from langchain_core.tracers.langchain import wait_for_all_tracers
     from langsmith import Client
+
     wait_for_all_tracers()
     Client().flush()
 
@@ -705,6 +746,7 @@ def flush_traces() -> None:
 #     measured anything. It cannot distinguish a good run from a bad one,
 #     so its score carries no information -- however much you like the number.
 # ==========================================================================
+
 
 @dataclass
 class Discrimination:
@@ -730,7 +772,11 @@ class Discrimination:
             # column of blanks on the experiment table, and students read
             # blanks as passes.
             return "ALL-SKIP (never applied - do not ship it)"
-        return "ALL-PASS (decoration)" if self.passed else "ALL-FAIL (impossible or broken)"
+            return (
+                "ALL-PASS (no evidence it can fail — blunt evaluator, or rows too easy)"
+                if self.passed
+                else "ALL-FAIL (impossible bar, or broken)"
+            )
 
 
 def discrimination_report(rows: list[dict]) -> dict[str, Discrimination]:
@@ -769,8 +815,12 @@ def print_discrimination(report: dict[str, Discrimination]) -> bool:
     return ok
 
 
-def run_offline_evaluators(inputs: dict, outputs: dict, reference_outputs: dict,
-                           evaluators: list[Callable] | None = None) -> list[dict]:
+def run_offline_evaluators(
+    inputs: dict,
+    outputs: dict,
+    reference_outputs: dict,
+    evaluators: list[Callable] | None = None,
+) -> list[dict]:
     """Run evaluators locally against one (inputs, outputs, reference) triple.
 
     Same keyword-matching LangSmith does, so an evaluator that works here
@@ -780,15 +830,21 @@ def run_offline_evaluators(inputs: dict, outputs: dict, reference_outputs: dict,
     import inspect
 
     results: list[dict] = []
-    available = {"inputs": inputs, "outputs": outputs,
-                 "reference_outputs": reference_outputs}
-    for ev in (evaluators if evaluators is not None else OFFLINE_EVALUATORS):
+    available = {
+        "inputs": inputs,
+        "outputs": outputs,
+        "reference_outputs": reference_outputs,
+    }
+    for ev in evaluators if evaluators is not None else OFFLINE_EVALUATORS:
         params = inspect.signature(ev).parameters
         kwargs = {k: v for k, v in available.items() if k in params}
         try:
             r = ev(**kwargs)
         except Exception as exc:
-            r = {"key": getattr(ev, "__name__", "unknown"), "score": None,
-                 "comment": f"evaluator raised: {exc!r}"}
+            r = {
+                "key": getattr(ev, "__name__", "unknown"),
+                "score": None,
+                "comment": f"evaluator raised: {exc!r}",
+            }
         results.extend(r if isinstance(r, list) else [r])
     return results

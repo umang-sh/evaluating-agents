@@ -39,20 +39,27 @@ from collections import defaultdict
 # Load .env BEFORE importing evalkit -- gotcha #5, the LangSmith project is
 # read at import time and cached. A .env that loads late loads for nothing.
 try:
-    from dotenv import load_dotenv, find_dotenv
+    from dotenv import find_dotenv, load_dotenv
+
     _ENV = find_dotenv(usecwd=True)
     if _ENV:
         load_dotenv(_ENV, override=False)
 except ImportError:
     _ENV = ""
 
-import evalkit
-from evalkit import (MODEL_IDS, PROJECT, discrimination_report,
-                     env_setup, make_chat, make_groundedness_judge,
-                     print_discrimination, run_offline_evaluators)
-
 import eval_dataset
+import evalkit
 import seeds
+from evalkit import (
+    MODEL_IDS,
+    PROJECT,
+    discrimination_report,
+    env_setup,
+    make_chat,
+    make_groundedness_judge,
+    print_discrimination,
+    run_offline_evaluators,
+)
 
 __version__ = "s4-2026-09-01a"
 
@@ -95,8 +102,12 @@ def check(name: str, ok: bool, detail: str = "", gate: bool = True) -> bool:
 # ==========================================================================
 
 REQUIRED = {
-    "langchain": "1.3.16", "langchain_core": "1.6.1", "langchain_anthropic": "1.6.1",
-    "langgraph": "1.2.11", "langsmith": "0.11.1", "langchain_tavily": "0.2.18",
+    "langchain": "1.3.16",
+    "langchain_core": "1.6.1",
+    "langchain_anthropic": "1.6.1",
+    "langgraph": "1.2.11",
+    "langsmith": "0.11.1",
+    "langchain_tavily": "0.2.18",
 }
 
 
@@ -114,17 +125,24 @@ def check_pins(strict: bool = False) -> bool:
             ok = check(f"import {mod}", False, repr(exc)) and ok
             continue
         same = got == want
-        ok = check(f"{dist} == {want}", same or not strict,
-                   f"found {got}" + ("" if same else "  <-- DRIFT")) and ok
+        ok = (
+            check(
+                f"{dist} == {want}",
+                same or not strict,
+                f"found {got}" + ("" if same else "  <-- DRIFT"),
+            )
+            and ok
+        )
 
     # Importing the module is not importing the SYMBOLS the course uses.
     # A resolution that quietly installed a different minor version is silent.
     try:
-        from langchain.agents import create_agent            # noqa: F401
-        from langchain_core.tools import tool                # noqa: F401
-        from langgraph.graph import StateGraph               # noqa: F401
-        from langsmith import Client                         # noqa: F401
-        from langsmith.utils import LangSmithNotFoundError   # noqa: F401
+        from langchain.agents import create_agent  # noqa: F401
+        from langchain_core.tools import tool  # noqa: F401
+        from langgraph.graph import StateGraph  # noqa: F401
+        from langsmith import Client  # noqa: F401
+        from langsmith.utils import LangSmithNotFoundError  # noqa: F401
+
         ok = check("every symbol the course uses imports", True) and ok
     except Exception as exc:
         ok = check("every symbol the course uses imports", False, repr(exc)) and ok
@@ -136,24 +154,35 @@ def check_pins(strict: bool = False) -> bool:
 #     A provider can accept the kwarg and drop it before the request.
 # ==========================================================================
 
+
 def check_effort_on_wire(provider: str = "anthropic") -> bool:
     chat, pinned = make_chat(provider)  # type: ignore[arg-type]
     if not pinned:
-        return check(f"reasoning_effort pinned ({provider})", False,
-                     "constructor rejected it - falling back, caveat the slide")
+        return check(
+            f"reasoning_effort pinned ({provider})",
+            False,
+            "constructor rejected it - falling back, caveat the slide",
+        )
     try:
         msg = chat.invoke("Reply with the single word: ok")
-        return check(f"reasoning_effort accepted on the wire ({provider})", True,
-                     f"model replied {msg.text.strip()[:20]!r}")
+        return check(
+            f"reasoning_effort accepted on the wire ({provider})",
+            True,
+            f"model replied {msg.text.strip()[:20]!r}",
+        )
     except Exception as exc:
-        return check(f"reasoning_effort accepted on the wire ({provider})", False,
-                     repr(exc)[:180])
+        return check(
+            f"reasoning_effort accepted on the wire ({provider})",
+            False,
+            repr(exc)[:180],
+        )
 
 
 # ==========================================================================
 # 3.  Ground truth re-verification.  A stale keyword marks a CORRECT answer
 #     wrong, which is worse than no check -- it looks like a finding.
 # ==========================================================================
+
 
 def check_ground_truth() -> bool:
     agent = seeds.build_healthy()
@@ -170,9 +199,17 @@ def check_ground_truth() -> bool:
             ok = check(f"ground truth: {q[:44]}...", False, repr(exc)[:120]) and ok
             continue
         hit = all(k.lower() in answer for k in want)
-        ok = check(f"ground truth: {q[:44]}...", hit,
-                   f"must_contain={want}" +
-                   ("" if hit else f"  <-- STALE? check {row['metadata']['verify_url']}")) and ok
+        ok = (
+            check(
+                f"ground truth: {q[:44]}...",
+                hit,
+                f"must_contain={want}"
+                + (
+                    "" if hit else f"  <-- STALE? check {row['metadata']['verify_url']}"
+                ),
+            )
+            and ok
+        )
     return ok
 
 
@@ -186,14 +223,20 @@ SYNTHETIC = {
     # the harness; they do not verify the seeds. Only a live run does that.
     "healthy": {
         "answer": "The latest langgraph release is 1.2.11 according to PyPI.",
-        "tool_calls": [{"name": "web_search", "args": {"query": "langgraph pypi version"}}],
-        "evidence": ["[{\"title\": \"langgraph 1.2.11\", \"url\": \"pypi.org\"}]"],
+        "tool_calls": [
+            {"name": "web_search", "args": {"query": "langgraph pypi version"}}
+        ],
+        "evidence": ['[{"title": "langgraph 1.2.11", "url": "pypi.org"}]'],
     },
     "wrong_tool": {
         "answer": "The latest langgraph release is 1.2.11.",
-        "tool_calls": [{"name": "package_registry", "args": {"package_name": "langgraph"}}],
-        "evidence": ['{"package": "langgraph", "version": "1.2.11", '
-                     '"source": "internal registry snapshot"}'],
+        "tool_calls": [
+            {"name": "package_registry", "args": {"package_name": "langgraph"}}
+        ],
+        "evidence": [
+            '{"package": "langgraph", "version": "1.2.11", '
+            '"source": "internal registry snapshot"}'
+        ],
     },
     "redundant": {
         "answer": "The latest langgraph release is 1.2.11 according to PyPI.",
@@ -201,8 +244,10 @@ SYNTHETIC = {
             {"name": "web_search", "args": {"query": "langgraph pypi version"}},
             {"name": "web_search", "args": {"query": "langgraph pypi version"}},
         ],
-        "evidence": ["[{\"title\": \"langgraph 1.2.11\"}]",
-                     "[{\"title\": \"langgraph 1.2.11\"}]"],
+        "evidence": [
+            '[{"title": "langgraph 1.2.11"}]',
+            '[{"title": "langgraph 1.2.11"}]',
+        ],
     },
     # UPDATED 1 Sep from a live run. The original synthetic answer here was a
     # confident "1.2.11" -- the staged hallucination the session was designed
@@ -210,9 +255,13 @@ SYNTHETIC = {
     # measured, not what was assumed, because a synthetic that disagrees with
     # reality is a harness that lies to you in advance.
     "empty_search": {
-        "answer": ("I could not find any results for this. I do not want to "
-                   "state a version number I have not verified."),
-        "tool_calls": [{"name": "web_search", "args": {"query": "langgraph pypi version"}}],
+        "answer": (
+            "I could not find any results for this. I do not want to "
+            "state a version number I have not verified."
+        ),
+        "tool_calls": [
+            {"name": "web_search", "args": {"query": "langgraph pypi version"}}
+        ],
         "evidence": ["[]"],
     },
 }
@@ -279,10 +328,15 @@ def assert_matrix(grid, judge_on: bool) -> bool:
     # (a) healthy passes everything. Session 2's classifier tagged its own
     #     clean control as broken THREE ways. Test the control first.
     healthy = grid.get("healthy", {})
-    bad = [k for k, v in healthy.items()
-           if any(x is False for x in v)]
-    ok = check("control: healthy passes every evaluator", not bad,
-               f"failed {bad}" if bad else "") and ok
+    bad = [k for k, v in healthy.items() if any(x is False for x in v)]
+    ok = (
+        check(
+            "control: healthy passes every evaluator",
+            not bad,
+            f"failed {bad}" if bad else "",
+        )
+        and ok
+    )
 
     # (b) each broken seed trips the evaluator it exists to trip.
     for seed, expected in seeds.EXPECTED.items():
@@ -295,8 +349,16 @@ def assert_matrix(grid, judge_on: bool) -> bool:
                 continue
             vals = [x for x in row.get(key, []) if x is not None]
             tripped = bool(vals) and not any(vals)
-            ok = check(f"{seed} fails {key}", tripped,
-                       "" if tripped else f"got {vals} - seed does not reproduce, RETIRE IT") and ok
+            ok = (
+                check(
+                    f"{seed} fails {key}",
+                    tripped,
+                    ""
+                    if tripped
+                    else f"got {vals} - seed does not reproduce, RETIRE IT",
+                )
+                and ok
+            )
 
     # (c) THE PUNCHLINE. Every broken seed must still pass outcome_keyword.
     #     If it does not, the seed makes the cheap grader look better than it
@@ -308,24 +370,41 @@ def assert_matrix(grid, judge_on: bool) -> bool:
         # required to pass it.
         if "outcome_keyword" in seeds.EXPECTED[seed]:
             continue
-        vals = [x for x in grid.get(seed, {}).get("outcome_keyword", []) if x is not None]
+        vals = [
+            x for x in grid.get(seed, {}).get("outcome_keyword", []) if x is not None
+        ]
         waved = bool(vals) and all(vals)
-        ok = check(f"outcome_keyword still PASSES {seed}", waved,
-                   "" if waved else f"got {vals} - wrong seed for this session") and ok
+        ok = (
+            check(
+                f"outcome_keyword still PASSES {seed}",
+                waved,
+                "" if waved else f"got {vals} - wrong seed for this session",
+            )
+            and ok
+        )
 
     # (d) no evaluator is all-pass or all-fail across the whole matrix.
-    flat = [{"key": k, "score": x}
-            for row in grid.values() for k, v in row.items() for x in v]
+    flat = [
+        {"key": k, "score": x}
+        for row in grid.values()
+        for k, v in row.items()
+        for x in v
+    ]
     report = discrimination_report(flat)
     print_discrimination(report)
 
     blind = evalkit.BLIND_BY_DESIGN
-    offenders = [k for k, d in report.items()
-                 if not d.discriminates and k not in blind]
-    ok = check("every evaluator discriminates (except the blind-by-design)",
-               not offenders,
-               f"retire: {offenders}" if offenders else
-               f"blind by design, as expected: {sorted(blind & set(report))}") and ok
+    offenders = [k for k, d in report.items() if not d.discriminates and k not in blind]
+    ok = (
+        check(
+            "every evaluator discriminates (except the blind-by-design)",
+            not offenders,
+            f"retire: {offenders}"
+            if offenders
+            else f"blind by design, as expected: {sorted(blind & set(report))}",
+        )
+        and ok
+    )
 
     # And the exemption is itself checked. outcome_keyword must be blind here
     # -- if it started discriminating, a seed stopped producing a plausible
@@ -337,28 +416,48 @@ def assert_matrix(grid, judge_on: bool) -> bool:
         # would be blind to all four seeds. It is blind to `redundant` -- a
         # perfect-looking answer reached by wasteful path -- and that single
         # row is enough to carry the session's argument.
-        check(f"{k} blind across seeds", not d.discriminates, gate=False, detail=
-              "blind, as designed" if not d.discriminates else
-              f"discriminates {d.passed}p/{d.failed}f - see the `redundant` row, "
-              "which is the one that carries the argument")
+        check(
+            f"{k} blind across seeds",
+            not d.discriminates,
+            gate=False,
+            detail="blind, as designed"
+            if not d.discriminates
+            else f"discriminates {d.passed}p/{d.failed}f - see the `redundant` row, "
+            "which is the one that carries the argument",
+        )
 
     # (e) nothing FLAKY: a verdict that changes between runs is not a verdict.
     not_a_gate = getattr(seeds, "NOT_A_GATE", set())
-    flaky = [f"{s}.{k}" for s, row in grid.items() for k, v in row.items()
-             if len({x for x in v if x is not None}) > 1 and k not in not_a_gate]
-    soft = [f"{s}.{k}" for s, row in grid.items() for k, v in row.items()
-            if len({x for x in v if x is not None}) > 1 and k in not_a_gate]
+    flaky = [
+        f"{s}.{k}"
+        for s, row in grid.items()
+        for k, v in row.items()
+        if len({x for x in v if x is not None}) > 1 and k not in not_a_gate
+    ]
+    soft = [
+        f"{s}.{k}"
+        for s, row in grid.items()
+        for k, v in row.items()
+        if len({x for x in v if x is not None}) > 1 and k in not_a_gate
+    ]
     if soft:
         print(f"  [note] judge disagreed with itself on: {soft}")
         print("         Not a gate. This IS the Session 8 argument, measured.")
-    ok = check("no verdict flips between runs", not flaky,
-               f"flaky: {flaky}" if flaky else "") and ok
+    ok = (
+        check(
+            "no verdict flips between runs",
+            not flaky,
+            f"flaky: {flaky}" if flaky else "",
+        )
+        and ok
+    )
     return ok
 
 
 # ==========================================================================
 # 5.  Live experiment round trip.  "It executed" is not the check.
 # ==========================================================================
+
 
 def check_experiment(client, judge=None) -> bool:
     from langsmith import Client  # noqa: F401
@@ -368,8 +467,11 @@ def check_experiment(client, judge=None) -> bool:
     data = eval_dataset.EXAMPLES[:2]
     try:
         eval_dataset.push(client)
-        rows = list(client.list_examples(dataset_name=evalkit.DATASET,
-                                         metadata={"category": "browser_search"}))
+        rows = list(
+            client.list_examples(
+                dataset_name=evalkit.DATASET, metadata={"category": "browser_search"}
+            )
+        )
         results = client.evaluate(
             target,
             data=rows or evalkit.DATASET,
@@ -389,7 +491,9 @@ def check_experiment(client, judge=None) -> bool:
     def _key(r):
         # EvaluationResult is a pydantic model, not a dict. Handle both --
         # the SDK returns objects here and dicts elsewhere.
-        return getattr(r, "key", None) or (r.get("key") if isinstance(r, dict) else None)
+        return getattr(r, "key", None) or (
+            r.get("key") if isinstance(r, dict) else None
+        )
 
     keys = set()
     for row in got:
@@ -399,41 +503,75 @@ def check_experiment(client, judge=None) -> bool:
     keys.discard(None)
     expected = {"outcome_keyword", "tool_correctness", "trajectory_no_waste"}
     missing = expected - keys
-    return check("feedback keys readable back from the experiment", not missing,
-                 f"got {sorted(keys)}" + (f" missing {sorted(missing)}" if missing else ""))
+    return check(
+        "feedback keys readable back from the experiment",
+        not missing,
+        f"got {sorted(keys)}" + (f" missing {sorted(missing)}" if missing else ""),
+    )
 
 
 # ==========================================================================
 # 6.  What the judge costs.  Nothing goes on a slide that was not measured.
 # ==========================================================================
 
-def measure_judge_cost(judge, sample: dict) -> dict:
-    from langsmith import Client
+
+def measure_judge_cost(judge, sample: dict, n: int = 5) -> dict:
+    """Measure the judge n times, not once.
+
+    The first version of this ran ONCE and put 12.83s on a slide. A student
+    then ran the same judge on the same input and got 3.2s -- a 4x gap. The
+    number was not wrong, it was a single sample of a quantity that varies,
+    which is precisely the sin this session is about. Session 3 NO-GO'd on
+    four checks for the same reason and we did it again here.
+
+    So: n samples, report the MEDIAN and the SPREAD, and put both on the
+    slide. A latency you quote without a range is a latency you have not
+    measured.
+    """
+    import statistics
     from datetime import datetime, timedelta, timezone
 
-    t0 = time.time()
-    since = datetime.now(timezone.utc) - timedelta(seconds=5)
-    verdict = judge(MATRIX_INPUTS, sample)
-    latency = round(time.time() - t0, 2)
+    from langsmith import Client
 
-    evalkit.flush_traces()
-    client = Client()
-    cost = None
-    root_id = evalkit.find_trace_root(client, since=since)
-    if root_id:
-        run, _ = evalkit.read_run_when_ready(client, root_id, min_spans=1)
-        if run is not None and run.total_cost:
-            cost = float(run.total_cost)
-    return {"latency_s": latency, "cost_usd": cost,
-            "verdict": str(verdict.get("score"))}
+    lats, costs = [], []
+    for i in range(n):
+        since = datetime.now(timezone.utc) - timedelta(seconds=5)
+        t0 = time.time()
+        verdict = judge(MATRIX_INPUTS, sample)
+        lats.append(round(time.time() - t0, 2))
+
+        # Cost only needs resolving once -- it does not vary run to run, and
+        # each resolution costs a trace round trip.
+        if i == 0:
+            evalkit.flush_traces()
+            client = Client()
+            root_id = evalkit.find_trace_root(client, since=since)
+            if root_id:
+                run, _ = evalkit.read_run_when_ready(client, root_id, min_spans=1)
+                if run is not None and run.total_cost:
+                    costs.append(float(run.total_cost))
+        print(f"    judge run {i + 1}/{n}: {lats[-1]}s  -> {verdict.get('score')}")
+
+    return {
+        "n": n,
+        "latency_s": round(statistics.median(lats), 2),  # the headline number
+        "latency_s_min": min(lats),
+        "latency_s_max": max(lats),
+        "latency_s_all": lats,
+        "cost_usd": costs[0] if costs else None,
+    }
 
 
 # ==========================================================================
 
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--offline", action="store_true",
-                    help="exercise the matrix logic with synthetic runs, no API")
+    ap.add_argument(
+        "--offline",
+        action="store_true",
+        help="exercise the matrix logic with synthetic runs, no API",
+    )
     ap.add_argument("--save", action="store_true", help="write fixtures + deck numbers")
     ap.add_argument("--all-providers", action="store_true")
     ap.add_argument("--runs", type=int, default=2, help="runs per seed (live only)")
@@ -441,13 +579,17 @@ def main() -> int:
     ap.add_argument("--strict-pins", action="store_true")
     args = ap.parse_args()
 
-    print(f"preflight4 {__version__} | evalkit {evalkit.__version__} | "
-          f"seeds {seeds.__version__} | dataset {eval_dataset.__version__}")
+    print(
+        f"preflight4 {__version__} | evalkit {evalkit.__version__} | "
+        f"seeds {seeds.__version__} | dataset {eval_dataset.__version__}"
+    )
     print("=" * 74)
 
     if evalkit.__version__ != seeds.__version__ != eval_dataset.__version__:
-        print("WARNING: module versions differ. A stale module cached in a running "
-              "kernel reports the previous version's verdicts. Restart it.")
+        print(
+            "WARNING: module versions differ. A stale module cached in a running "
+            "kernel reports the previous version's verdicts. Restart it."
+        )
 
     # ---- offline: harness self-test -------------------------------------
     if args.offline:
@@ -472,8 +614,11 @@ def main() -> int:
         ok = check("LANGSMITH_PROJECT resolves", env_setup() == PROJECT, PROJECT) and ok
     except Exception as exc:
         ok = check("LANGSMITH_PROJECT resolves", False, repr(exc)[:160]) and ok
-    missing = [v for v in ("ANTHROPIC_API_KEY", "LANGSMITH_API_KEY", "TAVILY_API_KEY")
-               if not os.environ.get(v)]
+    missing = [
+        v
+        for v in ("ANTHROPIC_API_KEY", "LANGSMITH_API_KEY", "TAVILY_API_KEY")
+        if not os.environ.get(v)
+    ]
     for v in ("ANTHROPIC_API_KEY", "LANGSMITH_API_KEY", "TAVILY_API_KEY"):
         check(f"{v} present", v not in missing)
 
@@ -502,20 +647,22 @@ def main() -> int:
     for p in provs:
         if p != "anthropic" and not args.all_providers:
             continue
-        check_effort_on_wire(p)   # informational: a fallback is not a NO-GO
+        check_effort_on_wire(p)  # informational: a fallback is not a NO-GO
 
     judge = None if args.no_judge else make_groundedness_judge()
 
     print("\n4. ground truth still current")
     ok = check_ground_truth() and ok
 
-    print(f"\n5. discrimination matrix — {len(seeds.SEEDS)} seeds x "
-          f"{args.runs} runs x {len(PROBES)} probes")
+    print(
+        f"\n5. discrimination matrix — {len(seeds.SEEDS)} seeds x "
+        f"{args.runs} runs x {len(PROBES)} probes"
+    )
     runs: dict[str, list[dict]] = {}
     for name in seeds.SEEDS:
         outs = []
         for r in range(args.runs):
-            for q in PROBES[:1]:      # matrix grades one reference row
+            for q in PROBES[:1]:  # matrix grades one reference row
                 try:
                     outs.append(seeds.run_seed(name, q))
                 except Exception as exc:
@@ -539,21 +686,40 @@ def main() -> int:
 
     print("\n6. live experiment round trip")
     from langsmith import Client
+
     client = Client()
     ok = check_experiment(client, judge) and ok
 
-    deck: dict = {"version": __version__, "provider": evalkit.PROVIDER,
-                  "effort_pinned": evalkit.EFFORT_PINNED,
-                  "matrix": {s: {k: v for k, v in row.items()} for s, row in grid.items()}}
+    deck: dict = {
+        "version": __version__,
+        "provider": evalkit.PROVIDER,
+        "effort_pinned": evalkit.EFFORT_PINNED,
+        "matrix": {s: {k: v for k, v in row.items()} for s, row in grid.items()},
+    }
 
     if judge is not None and runs.get("empty_search"):
         print("\n7. what the judge costs")
         m = measure_judge_cost(judge, runs["empty_search"][0])
         deck["judge"] = m
-        check("judge cost measured", m["cost_usd"] is not None,
-              f"{m['latency_s']}s, " +
-              (f"${m['cost_usd']:.4f}/example" if m["cost_usd"]
-               else "no pricing row - add one in Settings -> Models BEFORE the run"))
+        spread = m["latency_s_max"] / max(m["latency_s_min"], 0.01)
+        check(
+            "judge cost measured",
+            m["cost_usd"] is not None,
+            f"median {m['latency_s']}s (range {m['latency_s_min']}-{m['latency_s_max']}s, "
+            f"{spread:.1f}x), "
+            + (
+                f"${m['cost_usd']:.4f}/example"
+                if m["cost_usd"]
+                else "no pricing row - add one in Settings -> Models BEFORE the run"
+            ),
+        )
+        check(
+            "judge latency spread is worth reporting",
+            True,
+            gate=False,
+            detail=f"{spread:.1f}x across {m['n']} runs - quote the RANGE on the "
+            "slide, not the median alone",
+        )
 
     if args.save and any(not good for _, good, _ in REPORT):
         print("\nNOT saving fixtures or deck numbers -- there are NO-GOs above.")
