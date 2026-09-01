@@ -1,0 +1,84 @@
+{
+  "version": "s4-2026-09-01a",
+  "provider": "anthropic",
+  "effort_pinned": true,
+  "matrix": {
+    "healthy": {
+      "outcome_keyword": [
+        true,
+        true
+      ],
+      "tool_correctness": [
+        true,
+        true
+      ],
+      "trajectory_no_waste": [
+        true,
+        true
+      ],
+      "groundedness": [
+        true,
+        true
+      ]
+    },
+    "wrong_tool": {
+      "outcome_keyword": [
+        true,
+        true
+      ],
+      "tool_correctness": [
+        false,
+        false
+      ],
+      "trajectory_no_waste": [
+        true,
+        true
+      ],
+      "groundedness": [
+        true,
+        true
+      ]
+    },
+    "redundant": {
+      "outcome_keyword": [
+        true,
+        true
+      ],
+      "tool_correctness": [
+        true,
+        true
+      ],
+      "trajectory_no_waste": [
+        false,
+        false
+      ],
+      "groundedness": [
+        true,
+        true
+      ]
+    },
+    "empty_search": {
+      "outcome_keyword": [
+        false,
+        false
+      ],
+      "tool_correctness": [
+        true,
+        true
+      ],
+      "trajectory_no_waste": [
+        false,
+        false
+      ],
+      "groundedness": [
+        false,
+        true
+      ]
+    }
+  },
+  "judge": {
+    "latency_s": 2.75,
+    "cost_usd": 0.001536,
+    "verdict": "False"
+  }
+}

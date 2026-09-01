@@ -1,0 +1,473 @@
+{
+  "version": "s4-2026-09-01a",
+  "runs": [
+    {
+      "seed": "healthy",
+      "answer": "Based on PyPI stats (pypistats.org), the latest released version of `langgraph` is **1.2.11** (Source: pypistats.org/packages/langgraph), with pepy.tech showing 1.2.1 as slightly outdated data.\n\nThe latest released version of the `langgraph` package on PyPI is **1.2.11**.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the latest released version of the `langgraph` package on PyPI?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "name": "web_search",
+              "args": {
+                "query": "langgraph pypi latest version"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"query\": \"langgraph pypi latest version\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"url\": \"https://pepy.tech/projects/langgraph\", \"title\": \"langgraph \\u00b7 540.6M downloads on PyPI\", \"content\": \"pepy.tech\\n\\nLoginSign up \\u2192\\n\\n# langgraph\\n\\nBuilding stateful, multi-actor applications with LLMs\\n\\nlanggraphhas been downloaded 540,593,841times in total on PyPI, including 67,082,028in the last 30 days.The latest version is 1.2.1, released May 21, 2026.\\n\\nVersion1.2.1\\n\\nDownloads\\n\\nLicense\\u2014\\n\\nAuthor\\u2014\\n\\nUpdatedMay 21, 2026\\n\\nSource \\u2192PyPI \\u2192\\n\\n## Downloads\\n\\nWeekly, last 90d.  \\nIncludes CI traffic.\\n\\nVersionsTotal1.\\\\0.\\\\\\n\\nRange\\u00b7\\u00b7\\u00b7\\n\\nView\\u00b7\\u00b7\\n\\nGranularity\\u00b7\\u00b7\\n\\nGroup by\\u00b7\\n\\nCI traffic\\u00b7 [...] Thirteen recent days of`langgraph` downloads. Drag the green handle on the right to guess where day fourteen lands. [...] CI traffic\\u00b7\\n\\nStack: Off\\u00b7CI: Included\\u00b73 / 277 series\\n\\nSelected total\\u00b7404.69M\\n\\n540.6MAll-time\\n\\n67.1MLast 30 days\\n\\n806.1kLast 24 h\\n\\n18.72/sPer second\\n\\nSponsored\\n\\nSponsorships keep pepy free to read\\n\\n## Version distribution\\n\\nShare of downloads by released version. Computed over the last quarter.\\n\\nLast 90 days \\u00b7 top 8\\n\\n 01\\n\\n  ### 1.2.9\\n\\n  19.2M downloads\\n\\n  9.5%\\n\\n  Downloads19.2M\\n\\n  9.5%\\n 02\\n\\n  ### 1.0.10\\n\\n  17.7M downloads\\n\\n  8.8%\\n\\n  Downloads17.7M\\n\\n  8.8%\\n 03\\n\\n  ### 1.2.6\\n\\n  13.9M downloads\", \"score\": 0.9974788, \"raw_content\": null, \"id\": \"3917d1-00\"}, {\"url\": \"https://pypistats.org/packages/langgraph\", \"title\": \"PyPI Download Stats\", \"content\": \"# PyPI Stats\\n\\nSearch   \\n   \\n All packages   \\n Top packages   \\n   \\n Track packages\\n\\n# langgraph\\n\\nPyPI page   \\n Home page   \\n Author: None   \\n Summary: Building stateful, multi-actor applications with LLMs   \\n Latest version: 1.2.11   \\n Required dependencies: langchain-core | langgraph-checkpoint | langgraph-prebuilt | langgraph-sdk | pydantic | xxhash   \\n   \\n Downloads last day: 2,493,477   \\n Downloads last week: 16,615,254   \\n Downloads last month: 71,995,453\", \"score\": 0.99666256, \"raw_content\": null, \"id\": \"aa2c39-01\"}, {\"url\": \"https://realpython.com/langgraph-python\", \"title\": \"LangGraph Tutorial: Build Stateful AI Agents in Python\", \"content\": \"This command will install the latest version of LangGraph from PyPI onto your machine. This tutorial was written for LangGraph 1.2, and the graph-building API that you\\u2019ll use here has been stable since the 1.0 long-term support release. To verify that the installation was successful, start a Python REPL and import LangGraph:\\n\\nLanguage: Python\\n\\n```\\n>>> import  langgraph\\n```\", \"score\": 0.9623913, \"raw_content\": null, \"id\": \"a4ad32-02\"}], \"response_time\": 0.0, \"request_id\": \"c73417b9-cff3-45a5-983d-cd3734c164cd\"}",
+          "name": "web_search"
+        },
+        {
+          "role": "assistant",
+          "content": "Based on PyPI stats (pypistats.org), the latest released version of `langgraph` is **1.2.11** (Source: pypistats.org/packages/langgraph), with pepy.tech showing 1.2.1 as slightly outdated data.\n\nThe latest released version of the `langgraph` package on PyPI is **1.2.11**."
+        }
+      ],
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "langgraph pypi latest version"
+          }
+        }
+      ],
+      "evidence": [
+        "{\"query\": \"langgraph pypi latest version\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"url\": \"https://pepy.tech/projects/langgraph\", \"title\": \"langgraph \\u00b7 540.6M downloads on PyPI\", \"content\": \"pepy.tech\\n\\nLoginSign up \\u2192\\n\\n# langgraph\\n\\nBuilding stateful, multi-actor applications with LLMs\\n\\nlanggraphhas been downloaded 540,593,841times in total on PyPI, including 67,082,028in the last 30 days.The latest version is 1.2.1, released May 21, 2026.\\n\\nVersion1.2.1\\n\\nDownloads\\n\\nLicense\\u2014\\n\\nAuthor\\u2014\\n\\nUpdatedMay 21, 2026\\n\\nSource \\u2192PyPI \\u2192\\n\\n## Downloads\\n\\nWeekly, last 90d.  \\nIncludes CI traffic.\\n\\nVersionsTotal1.\\\\0.\\\\\\n\\nRange\\u00b7\\u00b7\\u00b7\\n\\nView\\u00b7\\u00b7\\n\\nGranularity\\u00b7\\u00b7\\n\\nGroup by\\u00b7\\n\\nCI traffic\\u00b7 [...] Thirteen recent days of`langgraph` downloads. Drag the green handle on the right to guess where day fourteen lands. [...] CI traffic\\u00b7\\n\\nStack: Off\\u00b7CI: Included\\u00b73 / 277 series\\n\\nSelected total\\u00b7404.69M\\n\\n540.6MAll-time\\n\\n67.1MLast 30 days\\n\\n806.1kLast 24 h\\n\\n18.72/sPer second\\n\\nSponsored\\n\\nSponsorships keep pepy free to read\\n\\n## Version distribution\\n\\nShare of downloads by released version. Computed over the last quarter.\\n\\nLast 90 days \\u00b7 top 8\\n\\n 01\\n\\n  ### 1.2.9\\n\\n  19.2M downloads\\n\\n  9.5%\\n\\n  Downloads19.2M\\n\\n  9.5%\\n 02\\n\\n  ### 1.0.10\\n\\n  17.7M downloads\\n\\n  8.8%\\n\\n  Downloads17.7M\\n\\n  8.8%\\n 03\\n\\n  ### 1.2.6\\n\\n  13.9M downloads\", \"score\": 0.9974788, \"raw_content\": null, \"id\": \"3917d1-00\"}, {\"url\": \"https://pypistats.org/packages/langgraph\", \"title\": \"PyPI Download Stats\", \"content\": \"# PyPI Stats\\n\\nSearch   \\n   \\n All packages   \\n Top packages   \\n   \\n Track packages\\n\\n# langgraph\\n\\nPyPI page   \\n Home page   \\n Author: None   \\n Summary: Building stateful, multi-actor applications with LLMs   \\n Latest version: 1.2.11   \\n Required dependencies: langchain-core | langgraph-checkpoint | langgraph-prebuilt | langgraph-sdk | pydantic | xxhash   \\n   \\n Downloads last day: 2,493,477   \\n Downloads last week: 16,615,254   \\n Downloads last month: 71,995,453\", \"score\": 0.99666256, \"raw_content\": null, \"id\": \"aa2c39-01\"}, {\"url\": \"https://realpython.com/langgraph-python\", \"title\": \"LangGraph Tutorial: Build Stateful AI Agents in Python\", \"content\": \"This command will install the latest version of LangGraph from PyPI onto your machine. This tutorial was written for LangGraph 1.2, and the graph-building API that you\\u2019ll use here has been stable since the 1.0 long-term support release. To verify that the installation was successful, start a Python REPL and import LangGraph:\\n\\nLanguage: Python\\n\\n```\\n>>> import  langgraph\\n```\", \"score\": 0.9623913, \"raw_content\": null, \"id\": \"a4ad32-02\"}], \"response_time\": 0.0, \"request_id\": \"c73417b9-cff3-45a5-983d-cd3734c164cd\"}"
+      ]
+    },
+    {
+      "seed": "healthy",
+      "answer": "The two sources give slightly different numbers, likely because they were pulled at different times.\n\nAccording to pypistats.org, the latest released version of `langgraph` on PyPI is **1.2.11** (source: https://pypistats.org/packages/langgraph). A cached snapshot from pepy.tech showed 1.2.1 as of May 21, 2026, but this appears to be outdated relative to pypistats' figure.\n\n**Answer:** The latest released version of `langgraph` on PyPI is **1.2.11**.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the latest released version of the `langgraph` package on PyPI?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "name": "web_search",
+              "args": {
+                "query": "langgraph pypi latest version"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"query\": \"langgraph pypi latest version\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"url\": \"https://pepy.tech/projects/langgraph\", \"title\": \"langgraph \\u00b7 540.6M downloads on PyPI\", \"content\": \"pepy.tech\\n\\nLoginSign up \\u2192\\n\\n# langgraph\\n\\nBuilding stateful, multi-actor applications with LLMs\\n\\nlanggraphhas been downloaded 540,593,841times in total on PyPI, including 67,082,028in the last 30 days.The latest version is 1.2.1, released May 21, 2026.\\n\\nVersion1.2.1\\n\\nDownloads\\n\\nLicense\\u2014\\n\\nAuthor\\u2014\\n\\nUpdatedMay 21, 2026\\n\\nSource \\u2192PyPI \\u2192\\n\\n## Downloads\\n\\nWeekly, last 90d.  \\nIncludes CI traffic.\\n\\nVersionsTotal1.\\\\0.\\\\\\n\\nRange\\u00b7\\u00b7\\u00b7\\n\\nView\\u00b7\\u00b7\\n\\nGranularity\\u00b7\\u00b7\\n\\nGroup by\\u00b7\\n\\nCI traffic\\u00b7 [...] Thirteen recent days of`langgraph` downloads. Drag the green handle on the right to guess where day fourteen lands. [...] CI traffic\\u00b7\\n\\nStack: Off\\u00b7CI: Included\\u00b73 / 277 series\\n\\nSelected total\\u00b7404.69M\\n\\n540.6MAll-time\\n\\n67.1MLast 30 days\\n\\n806.1kLast 24 h\\n\\n18.72/sPer second\\n\\nSponsored\\n\\nSponsorships keep pepy free to read\\n\\n## Version distribution\\n\\nShare of downloads by released version. Computed over the last quarter.\\n\\nLast 90 days \\u00b7 top 8\\n\\n 01\\n\\n  ### 1.2.9\\n\\n  19.2M downloads\\n\\n  9.5%\\n\\n  Downloads19.2M\\n\\n  9.5%\\n 02\\n\\n  ### 1.0.10\\n\\n  17.7M downloads\\n\\n  8.8%\\n\\n  Downloads17.7M\\n\\n  8.8%\\n 03\\n\\n  ### 1.2.6\\n\\n  13.9M downloads\", \"score\": 0.9974788, \"raw_content\": null, \"id\": \"4a16a7-00\"}, {\"url\": \"https://pypistats.org/packages/langgraph\", \"title\": \"PyPI Download Stats\", \"content\": \"# PyPI Stats\\n\\nSearch   \\n   \\n All packages   \\n Top packages   \\n   \\n Track packages\\n\\n# langgraph\\n\\nPyPI page   \\n Home page   \\n Author: None   \\n Summary: Building stateful, multi-actor applications with LLMs   \\n Latest version: 1.2.11   \\n Required dependencies: langchain-core | langgraph-checkpoint | langgraph-prebuilt | langgraph-sdk | pydantic | xxhash   \\n   \\n Downloads last day: 2,493,477   \\n Downloads last week: 16,615,254   \\n Downloads last month: 71,995,453\", \"score\": 0.99666256, \"raw_content\": null, \"id\": \"5f4a55-01\"}, {\"url\": \"https://realpython.com/langgraph-python\", \"title\": \"LangGraph Tutorial: Build Stateful AI Agents in Python\", \"content\": \"This command will install the latest version of LangGraph from PyPI onto your machine. This tutorial was written for LangGraph 1.2, and the graph-building API that you\\u2019ll use here has been stable since the 1.0 long-term support release. To verify that the installation was successful, start a Python REPL and import LangGraph:\\n\\nLanguage: Python\\n\\n```\\n>>> import  langgraph\\n```\", \"score\": 0.9623913, \"raw_content\": null, \"id\": \"4ec7cf-02\"}], \"response_time\": 0.0, \"request_id\": \"b29cfaba-fb96-4465-84e5-b4b91756d833\"}",
+          "name": "web_search"
+        },
+        {
+          "role": "assistant",
+          "content": "The two sources give slightly different numbers, likely because they were pulled at different times.\n\nAccording to pypistats.org, the latest released version of `langgraph` on PyPI is **1.2.11** (source: https://pypistats.org/packages/langgraph). A cached snapshot from pepy.tech showed 1.2.1 as of May 21, 2026, but this appears to be outdated relative to pypistats' figure.\n\n**Answer:** The latest released version of `langgraph` on PyPI is **1.2.11**."
+        }
+      ],
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "langgraph pypi latest version"
+          }
+        }
+      ],
+      "evidence": [
+        "{\"query\": \"langgraph pypi latest version\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"url\": \"https://pepy.tech/projects/langgraph\", \"title\": \"langgraph \\u00b7 540.6M downloads on PyPI\", \"content\": \"pepy.tech\\n\\nLoginSign up \\u2192\\n\\n# langgraph\\n\\nBuilding stateful, multi-actor applications with LLMs\\n\\nlanggraphhas been downloaded 540,593,841times in total on PyPI, including 67,082,028in the last 30 days.The latest version is 1.2.1, released May 21, 2026.\\n\\nVersion1.2.1\\n\\nDownloads\\n\\nLicense\\u2014\\n\\nAuthor\\u2014\\n\\nUpdatedMay 21, 2026\\n\\nSource \\u2192PyPI \\u2192\\n\\n## Downloads\\n\\nWeekly, last 90d.  \\nIncludes CI traffic.\\n\\nVersionsTotal1.\\\\0.\\\\\\n\\nRange\\u00b7\\u00b7\\u00b7\\n\\nView\\u00b7\\u00b7\\n\\nGranularity\\u00b7\\u00b7\\n\\nGroup by\\u00b7\\n\\nCI traffic\\u00b7 [...] Thirteen recent days of`langgraph` downloads. Drag the green handle on the right to guess where day fourteen lands. [...] CI traffic\\u00b7\\n\\nStack: Off\\u00b7CI: Included\\u00b73 / 277 series\\n\\nSelected total\\u00b7404.69M\\n\\n540.6MAll-time\\n\\n67.1MLast 30 days\\n\\n806.1kLast 24 h\\n\\n18.72/sPer second\\n\\nSponsored\\n\\nSponsorships keep pepy free to read\\n\\n## Version distribution\\n\\nShare of downloads by released version. Computed over the last quarter.\\n\\nLast 90 days \\u00b7 top 8\\n\\n 01\\n\\n  ### 1.2.9\\n\\n  19.2M downloads\\n\\n  9.5%\\n\\n  Downloads19.2M\\n\\n  9.5%\\n 02\\n\\n  ### 1.0.10\\n\\n  17.7M downloads\\n\\n  8.8%\\n\\n  Downloads17.7M\\n\\n  8.8%\\n 03\\n\\n  ### 1.2.6\\n\\n  13.9M downloads\", \"score\": 0.9974788, \"raw_content\": null, \"id\": \"4a16a7-00\"}, {\"url\": \"https://pypistats.org/packages/langgraph\", \"title\": \"PyPI Download Stats\", \"content\": \"# PyPI Stats\\n\\nSearch   \\n   \\n All packages   \\n Top packages   \\n   \\n Track packages\\n\\n# langgraph\\n\\nPyPI page   \\n Home page   \\n Author: None   \\n Summary: Building stateful, multi-actor applications with LLMs   \\n Latest version: 1.2.11   \\n Required dependencies: langchain-core | langgraph-checkpoint | langgraph-prebuilt | langgraph-sdk | pydantic | xxhash   \\n   \\n Downloads last day: 2,493,477   \\n Downloads last week: 16,615,254   \\n Downloads last month: 71,995,453\", \"score\": 0.99666256, \"raw_content\": null, \"id\": \"5f4a55-01\"}, {\"url\": \"https://realpython.com/langgraph-python\", \"title\": \"LangGraph Tutorial: Build Stateful AI Agents in Python\", \"content\": \"This command will install the latest version of LangGraph from PyPI onto your machine. This tutorial was written for LangGraph 1.2, and the graph-building API that you\\u2019ll use here has been stable since the 1.0 long-term support release. To verify that the installation was successful, start a Python REPL and import LangGraph:\\n\\nLanguage: Python\\n\\n```\\n>>> import  langgraph\\n```\", \"score\": 0.9623913, \"raw_content\": null, \"id\": \"4ec7cf-02\"}], \"response_time\": 0.0, \"request_id\": \"b29cfaba-fb96-4465-84e5-b4b91756d833\"}"
+      ]
+    },
+    {
+      "seed": "wrong_tool",
+      "answer": "The latest released version of the `langgraph` package on PyPI is **1.2.11** (per internal registry snapshot).",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the latest released version of the `langgraph` package on PyPI?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "name": "package_registry",
+              "args": {
+                "package_name": "langgraph"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"package\": \"langgraph\", \"version\": \"1.2.11\", \"source\": \"internal registry snapshot\"}",
+          "name": "package_registry"
+        },
+        {
+          "role": "assistant",
+          "content": "The latest released version of the `langgraph` package on PyPI is **1.2.11** (per internal registry snapshot)."
+        }
+      ],
+      "tool_calls": [
+        {
+          "name": "package_registry",
+          "args": {
+            "package_name": "langgraph"
+          }
+        }
+      ],
+      "evidence": [
+        "{\"package\": \"langgraph\", \"version\": \"1.2.11\", \"source\": \"internal registry snapshot\"}"
+      ]
+    },
+    {
+      "seed": "wrong_tool",
+      "answer": "The latest released version of the `langgraph` package on PyPI is **1.2.11** (per internal registry snapshot).",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the latest released version of the `langgraph` package on PyPI?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "name": "package_registry",
+              "args": {
+                "package_name": "langgraph"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"package\": \"langgraph\", \"version\": \"1.2.11\", \"source\": \"internal registry snapshot\"}",
+          "name": "package_registry"
+        },
+        {
+          "role": "assistant",
+          "content": "The latest released version of the `langgraph` package on PyPI is **1.2.11** (per internal registry snapshot)."
+        }
+      ],
+      "tool_calls": [
+        {
+          "name": "package_registry",
+          "args": {
+            "package_name": "langgraph"
+          }
+        }
+      ],
+      "evidence": [
+        "{\"package\": \"langgraph\", \"version\": \"1.2.11\", \"source\": \"internal registry snapshot\"}"
+      ]
+    },
+    {
+      "seed": "redundant",
+      "answer": "Both search attempts returned consistent results, though the two sources differed slightly: pepy.tech listed 1.2.1 while pypistats.org listed 1.2.11 (a newer version), with 1.2.9 being the most-downloaded version in the last quarter\u2014suggesting the package has been iterating rapidly in the 1.2.x line.\n\nBased on PyPI statistics (pypistats.org), the latest released version of the `langgraph` package on PyPI is **1.2.11** (source: pypistats.org/packages/langgraph).",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the latest released version of the `langgraph` package on PyPI?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "name": "web_search",
+              "args": {
+                "query": "langgraph pypi latest version"
+              }
+            },
+            {
+              "name": "web_search",
+              "args": {
+                "query": "langgraph pypi latest version"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"query\": \"langgraph pypi latest version\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"url\": \"https://pepy.tech/projects/langgraph\", \"title\": \"langgraph \\u00b7 540.6M downloads on PyPI\", \"content\": \"pepy.tech\\n\\nLoginSign up \\u2192\\n\\n# langgraph\\n\\nBuilding stateful, multi-actor applications with LLMs\\n\\nlanggraphhas been downloaded 540,593,841times in total on PyPI, including 67,082,028in the last 30 days.The latest version is 1.2.1, released May 21, 2026.\\n\\nVersion1.2.1\\n\\nDownloads\\n\\nLicense\\u2014\\n\\nAuthor\\u2014\\n\\nUpdatedMay 21, 2026\\n\\nSource \\u2192PyPI \\u2192\\n\\n## Downloads\\n\\nWeekly, last 90d.  \\nIncludes CI traffic.\\n\\nVersionsTotal1.\\\\0.\\\\\\n\\nRange\\u00b7\\u00b7\\u00b7\\n\\nView\\u00b7\\u00b7\\n\\nGranularity\\u00b7\\u00b7\\n\\nGroup by\\u00b7\\n\\nCI traffic\\u00b7 [...] Thirteen recent days of`langgraph` downloads. Drag the green handle on the right to guess where day fourteen lands. [...] CI traffic\\u00b7\\n\\nStack: Off\\u00b7CI: Included\\u00b73 / 277 series\\n\\nSelected total\\u00b7404.69M\\n\\n540.6MAll-time\\n\\n67.1MLast 30 days\\n\\n806.1kLast 24 h\\n\\n18.72/sPer second\\n\\nSponsored\\n\\nSponsorships keep pepy free to read\\n\\n## Version distribution\\n\\nShare of downloads by released version. Computed over the last quarter.\\n\\nLast 90 days \\u00b7 top 8\\n\\n 01\\n\\n  ### 1.2.9\\n\\n  19.2M downloads\\n\\n  9.5%\\n\\n  Downloads19.2M\\n\\n  9.5%\\n 02\\n\\n  ### 1.0.10\\n\\n  17.7M downloads\\n\\n  8.8%\\n\\n  Downloads17.7M\\n\\n  8.8%\\n 03\\n\\n  ### 1.2.6\\n\\n  13.9M downloads\", \"score\": 0.9974788, \"raw_content\": null, \"id\": \"040a84-00\"}, {\"url\": \"https://pypistats.org/packages/langgraph\", \"title\": \"PyPI Download Stats\", \"content\": \"# PyPI Stats\\n\\nSearch   \\n   \\n All packages   \\n Top packages   \\n   \\n Track packages\\n\\n# langgraph\\n\\nPyPI page   \\n Home page   \\n Author: None   \\n Summary: Building stateful, multi-actor applications with LLMs   \\n Latest version: 1.2.11   \\n Required dependencies: langchain-core | langgraph-checkpoint | langgraph-prebuilt | langgraph-sdk | pydantic | xxhash   \\n   \\n Downloads last day: 2,493,477   \\n Downloads last week: 16,615,254   \\n Downloads last month: 71,995,453\", \"score\": 0.99666256, \"raw_content\": null, \"id\": \"a3fdd1-01\"}, {\"url\": \"https://realpython.com/langgraph-python\", \"title\": \"LangGraph Tutorial: Build Stateful AI Agents in Python\", \"content\": \"This command will install the latest version of LangGraph from PyPI onto your machine. This tutorial was written for LangGraph 1.2, and the graph-building API that you\\u2019ll use here has been stable since the 1.0 long-term support release. To verify that the installation was successful, start a Python REPL and import LangGraph:\\n\\nLanguage: Python\\n\\n```\\n>>> import  langgraph\\n```\", \"score\": 0.9623913, \"raw_content\": null, \"id\": \"8d148e-02\"}], \"response_time\": 0.0, \"request_id\": \"f67a6b7d-6c6a-46d6-996f-a53b9973b66f\"}",
+          "name": "web_search"
+        },
+        {
+          "role": "tool",
+          "content": "{\"query\": \"langgraph pypi latest version\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"url\": \"https://pepy.tech/projects/langgraph\", \"title\": \"langgraph \\u00b7 540.6M downloads on PyPI\", \"content\": \"pepy.tech\\n\\nLoginSign up \\u2192\\n\\n# langgraph\\n\\nBuilding stateful, multi-actor applications with LLMs\\n\\nlanggraphhas been downloaded 540,593,841times in total on PyPI, including 67,082,028in the last 30 days.The latest version is 1.2.1, released May 21, 2026.\\n\\nVersion1.2.1\\n\\nDownloads\\n\\nLicense\\u2014\\n\\nAuthor\\u2014\\n\\nUpdatedMay 21, 2026\\n\\nSource \\u2192PyPI \\u2192\\n\\n## Downloads\\n\\nWeekly, last 90d.  \\nIncludes CI traffic.\\n\\nVersionsTotal1.\\\\0.\\\\\\n\\nRange\\u00b7\\u00b7\\u00b7\\n\\nView\\u00b7\\u00b7\\n\\nGranularity\\u00b7\\u00b7\\n\\nGroup by\\u00b7\\n\\nCI traffic\\u00b7 [...] Thirteen recent days of`langgraph` downloads. Drag the green handle on the right to guess where day fourteen lands. [...] CI traffic\\u00b7\\n\\nStack: Off\\u00b7CI: Included\\u00b73 / 277 series\\n\\nSelected total\\u00b7404.69M\\n\\n540.6MAll-time\\n\\n67.1MLast 30 days\\n\\n806.1kLast 24 h\\n\\n18.72/sPer second\\n\\nSponsored\\n\\nSponsorships keep pepy free to read\\n\\n## Version distribution\\n\\nShare of downloads by released version. Computed over the last quarter.\\n\\nLast 90 days \\u00b7 top 8\\n\\n 01\\n\\n  ### 1.2.9\\n\\n  19.2M downloads\\n\\n  9.5%\\n\\n  Downloads19.2M\\n\\n  9.5%\\n 02\\n\\n  ### 1.0.10\\n\\n  17.7M downloads\\n\\n  8.8%\\n\\n  Downloads17.7M\\n\\n  8.8%\\n 03\\n\\n  ### 1.2.6\\n\\n  13.9M downloads\", \"score\": 0.9974788, \"raw_content\": null, \"id\": \"57e8be-00\"}, {\"url\": \"https://pypistats.org/packages/langgraph\", \"title\": \"PyPI Download Stats\", \"content\": \"# PyPI Stats\\n\\nSearch   \\n   \\n All packages   \\n Top packages   \\n   \\n Track packages\\n\\n# langgraph\\n\\nPyPI page   \\n Home page   \\n Author: None   \\n Summary: Building stateful, multi-actor applications with LLMs   \\n Latest version: 1.2.11   \\n Required dependencies: langchain-core | langgraph-checkpoint | langgraph-prebuilt | langgraph-sdk | pydantic | xxhash   \\n   \\n Downloads last day: 2,493,477   \\n Downloads last week: 16,615,254   \\n Downloads last month: 71,995,453\", \"score\": 0.99666256, \"raw_content\": null, \"id\": \"b4fb46-01\"}, {\"url\": \"https://realpython.com/langgraph-python\", \"title\": \"LangGraph Tutorial: Build Stateful AI Agents in Python\", \"content\": \"This command will install the latest version of LangGraph from PyPI onto your machine. This tutorial was written for LangGraph 1.2, and the graph-building API that you\\u2019ll use here has been stable since the 1.0 long-term support release. To verify that the installation was successful, start a Python REPL and import LangGraph:\\n\\nLanguage: Python\\n\\n```\\n>>> import  langgraph\\n```\", \"score\": 0.9623913, \"raw_content\": null, \"id\": \"314f1c-02\"}], \"response_time\": 0.0, \"request_id\": \"62a9ed66-6596-4208-af24-d75bb5ef8dee\"}",
+          "name": "web_search"
+        },
+        {
+          "role": "assistant",
+          "content": "Both search attempts returned consistent results, though the two sources differed slightly: pepy.tech listed 1.2.1 while pypistats.org listed 1.2.11 (a newer version), with 1.2.9 being the most-downloaded version in the last quarter\u2014suggesting the package has been iterating rapidly in the 1.2.x line.\n\nBased on PyPI statistics (pypistats.org), the latest released version of the `langgraph` package on PyPI is **1.2.11** (source: pypistats.org/packages/langgraph)."
+        }
+      ],
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "langgraph pypi latest version"
+          }
+        },
+        {
+          "name": "web_search",
+          "args": {
+            "query": "langgraph pypi latest version"
+          }
+        }
+      ],
+      "evidence": [
+        "{\"query\": \"langgraph pypi latest version\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"url\": \"https://pepy.tech/projects/langgraph\", \"title\": \"langgraph \\u00b7 540.6M downloads on PyPI\", \"content\": \"pepy.tech\\n\\nLoginSign up \\u2192\\n\\n# langgraph\\n\\nBuilding stateful, multi-actor applications with LLMs\\n\\nlanggraphhas been downloaded 540,593,841times in total on PyPI, including 67,082,028in the last 30 days.The latest version is 1.2.1, released May 21, 2026.\\n\\nVersion1.2.1\\n\\nDownloads\\n\\nLicense\\u2014\\n\\nAuthor\\u2014\\n\\nUpdatedMay 21, 2026\\n\\nSource \\u2192PyPI \\u2192\\n\\n## Downloads\\n\\nWeekly, last 90d.  \\nIncludes CI traffic.\\n\\nVersionsTotal1.\\\\0.\\\\\\n\\nRange\\u00b7\\u00b7\\u00b7\\n\\nView\\u00b7\\u00b7\\n\\nGranularity\\u00b7\\u00b7\\n\\nGroup by\\u00b7\\n\\nCI traffic\\u00b7 [...] Thirteen recent days of`langgraph` downloads. Drag the green handle on the right to guess where day fourteen lands. [...] CI traffic\\u00b7\\n\\nStack: Off\\u00b7CI: Included\\u00b73 / 277 series\\n\\nSelected total\\u00b7404.69M\\n\\n540.6MAll-time\\n\\n67.1MLast 30 days\\n\\n806.1kLast 24 h\\n\\n18.72/sPer second\\n\\nSponsored\\n\\nSponsorships keep pepy free to read\\n\\n## Version distribution\\n\\nShare of downloads by released version. Computed over the last quarter.\\n\\nLast 90 days \\u00b7 top 8\\n\\n 01\\n\\n  ### 1.2.9\\n\\n  19.2M downloads\\n\\n  9.5%\\n\\n  Downloads19.2M\\n\\n  9.5%\\n 02\\n\\n  ### 1.0.10\\n\\n  17.7M downloads\\n\\n  8.8%\\n\\n  Downloads17.7M\\n\\n  8.8%\\n 03\\n\\n  ### 1.2.6\\n\\n  13.9M downloads\", \"score\": 0.9974788, \"raw_content\": null, \"id\": \"040a84-00\"}, {\"url\": \"https://pypistats.org/packages/langgraph\", \"title\": \"PyPI Download Stats\", \"content\": \"# PyPI Stats\\n\\nSearch   \\n   \\n All packages   \\n Top packages   \\n   \\n Track packages\\n\\n# langgraph\\n\\nPyPI page   \\n Home page   \\n Author: None   \\n Summary: Building stateful, multi-actor applications with LLMs   \\n Latest version: 1.2.11   \\n Required dependencies: langchain-core | langgraph-checkpoint | langgraph-prebuilt | langgraph-sdk | pydantic | xxhash   \\n   \\n Downloads last day: 2,493,477   \\n Downloads last week: 16,615,254   \\n Downloads last month: 71,995,453\", \"score\": 0.99666256, \"raw_content\": null, \"id\": \"a3fdd1-01\"}, {\"url\": \"https://realpython.com/langgraph-python\", \"title\": \"LangGraph Tutorial: Build Stateful AI Agents in Python\", \"content\": \"This command will install the latest version of LangGraph from PyPI onto your machine. This tutorial was written for LangGraph 1.2, and the graph-building API that you\\u2019ll use here has been stable since the 1.0 long-term support release. To verify that the installation was successful, start a Python REPL and import LangGraph:\\n\\nLanguage: Python\\n\\n```\\n>>> import  langgraph\\n```\", \"score\": 0.9623913, \"raw_content\": null, \"id\": \"8d148e-02\"}], \"response_time\": 0.0, \"request_id\": \"f67a6b7d-6c6a-46d6-996f-a53b9973b66f\"}",
+        "{\"query\": \"langgraph pypi latest version\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"url\": \"https://pepy.tech/projects/langgraph\", \"title\": \"langgraph \\u00b7 540.6M downloads on PyPI\", \"content\": \"pepy.tech\\n\\nLoginSign up \\u2192\\n\\n# langgraph\\n\\nBuilding stateful, multi-actor applications with LLMs\\n\\nlanggraphhas been downloaded 540,593,841times in total on PyPI, including 67,082,028in the last 30 days.The latest version is 1.2.1, released May 21, 2026.\\n\\nVersion1.2.1\\n\\nDownloads\\n\\nLicense\\u2014\\n\\nAuthor\\u2014\\n\\nUpdatedMay 21, 2026\\n\\nSource \\u2192PyPI \\u2192\\n\\n## Downloads\\n\\nWeekly, last 90d.  \\nIncludes CI traffic.\\n\\nVersionsTotal1.\\\\0.\\\\\\n\\nRange\\u00b7\\u00b7\\u00b7\\n\\nView\\u00b7\\u00b7\\n\\nGranularity\\u00b7\\u00b7\\n\\nGroup by\\u00b7\\n\\nCI traffic\\u00b7 [...] Thirteen recent days of`langgraph` downloads. Drag the green handle on the right to guess where day fourteen lands. [...] CI traffic\\u00b7\\n\\nStack: Off\\u00b7CI: Included\\u00b73 / 277 series\\n\\nSelected total\\u00b7404.69M\\n\\n540.6MAll-time\\n\\n67.1MLast 30 days\\n\\n806.1kLast 24 h\\n\\n18.72/sPer second\\n\\nSponsored\\n\\nSponsorships keep pepy free to read\\n\\n## Version distribution\\n\\nShare of downloads by released version. Computed over the last quarter.\\n\\nLast 90 days \\u00b7 top 8\\n\\n 01\\n\\n  ### 1.2.9\\n\\n  19.2M downloads\\n\\n  9.5%\\n\\n  Downloads19.2M\\n\\n  9.5%\\n 02\\n\\n  ### 1.0.10\\n\\n  17.7M downloads\\n\\n  8.8%\\n\\n  Downloads17.7M\\n\\n  8.8%\\n 03\\n\\n  ### 1.2.6\\n\\n  13.9M downloads\", \"score\": 0.9974788, \"raw_content\": null, \"id\": \"57e8be-00\"}, {\"url\": \"https://pypistats.org/packages/langgraph\", \"title\": \"PyPI Download Stats\", \"content\": \"# PyPI Stats\\n\\nSearch   \\n   \\n All packages   \\n Top packages   \\n   \\n Track packages\\n\\n# langgraph\\n\\nPyPI page   \\n Home page   \\n Author: None   \\n Summary: Building stateful, multi-actor applications with LLMs   \\n Latest version: 1.2.11   \\n Required dependencies: langchain-core | langgraph-checkpoint | langgraph-prebuilt | langgraph-sdk | pydantic | xxhash   \\n   \\n Downloads last day: 2,493,477   \\n Downloads last week: 16,615,254   \\n Downloads last month: 71,995,453\", \"score\": 0.99666256, \"raw_content\": null, \"id\": \"b4fb46-01\"}, {\"url\": \"https://realpython.com/langgraph-python\", \"title\": \"LangGraph Tutorial: Build Stateful AI Agents in Python\", \"content\": \"This command will install the latest version of LangGraph from PyPI onto your machine. This tutorial was written for LangGraph 1.2, and the graph-building API that you\\u2019ll use here has been stable since the 1.0 long-term support release. To verify that the installation was successful, start a Python REPL and import LangGraph:\\n\\nLanguage: Python\\n\\n```\\n>>> import  langgraph\\n```\", \"score\": 0.9623913, \"raw_content\": null, \"id\": \"314f1c-02\"}], \"response_time\": 0.0, \"request_id\": \"62a9ed66-6596-4208-af24-d75bb5ef8dee\"}"
+      ]
+    },
+    {
+      "seed": "redundant",
+      "answer": "Both search attempts gave consistent results, though the two sources differ slightly (pepy.tech shows 1.2.1 as \"latest,\" which appears stale, while pypistats.org lists 1.2.11, which is more current and part of the same release series). According to PyPI Stats (pypistats.org), the latest released version of the `langgraph` package is **1.2.11**.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the latest released version of the `langgraph` package on PyPI?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "name": "web_search",
+              "args": {
+                "query": "langgraph pypi latest version"
+              }
+            },
+            {
+              "name": "web_search",
+              "args": {
+                "query": "langgraph pypi latest version"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"query\": \"langgraph pypi latest version\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"url\": \"https://pepy.tech/projects/langgraph\", \"title\": \"langgraph \\u00b7 540.6M downloads on PyPI\", \"content\": \"pepy.tech\\n\\nLoginSign up \\u2192\\n\\n# langgraph\\n\\nBuilding stateful, multi-actor applications with LLMs\\n\\nlanggraphhas been downloaded 540,593,841times in total on PyPI, including 67,082,028in the last 30 days.The latest version is 1.2.1, released May 21, 2026.\\n\\nVersion1.2.1\\n\\nDownloads\\n\\nLicense\\u2014\\n\\nAuthor\\u2014\\n\\nUpdatedMay 21, 2026\\n\\nSource \\u2192PyPI \\u2192\\n\\n## Downloads\\n\\nWeekly, last 90d.  \\nIncludes CI traffic.\\n\\nVersionsTotal1.\\\\0.\\\\\\n\\nRange\\u00b7\\u00b7\\u00b7\\n\\nView\\u00b7\\u00b7\\n\\nGranularity\\u00b7\\u00b7\\n\\nGroup by\\u00b7\\n\\nCI traffic\\u00b7 [...] Thirteen recent days of`langgraph` downloads. Drag the green handle on the right to guess where day fourteen lands. [...] CI traffic\\u00b7\\n\\nStack: Off\\u00b7CI: Included\\u00b73 / 277 series\\n\\nSelected total\\u00b7404.69M\\n\\n540.6MAll-time\\n\\n67.1MLast 30 days\\n\\n806.1kLast 24 h\\n\\n18.72/sPer second\\n\\nSponsored\\n\\nSponsorships keep pepy free to read\\n\\n## Version distribution\\n\\nShare of downloads by released version. Computed over the last quarter.\\n\\nLast 90 days \\u00b7 top 8\\n\\n 01\\n\\n  ### 1.2.9\\n\\n  19.2M downloads\\n\\n  9.5%\\n\\n  Downloads19.2M\\n\\n  9.5%\\n 02\\n\\n  ### 1.0.10\\n\\n  17.7M downloads\\n\\n  8.8%\\n\\n  Downloads17.7M\\n\\n  8.8%\\n 03\\n\\n  ### 1.2.6\\n\\n  13.9M downloads\", \"score\": 0.9974788, \"raw_content\": null, \"id\": \"979554-00\"}, {\"url\": \"https://pypistats.org/packages/langgraph\", \"title\": \"PyPI Download Stats\", \"content\": \"# PyPI Stats\\n\\nSearch   \\n   \\n All packages   \\n Top packages   \\n   \\n Track packages\\n\\n# langgraph\\n\\nPyPI page   \\n Home page   \\n Author: None   \\n Summary: Building stateful, multi-actor applications with LLMs   \\n Latest version: 1.2.11   \\n Required dependencies: langchain-core | langgraph-checkpoint | langgraph-prebuilt | langgraph-sdk | pydantic | xxhash   \\n   \\n Downloads last day: 2,493,477   \\n Downloads last week: 16,615,254   \\n Downloads last month: 71,995,453\", \"score\": 0.99666256, \"raw_content\": null, \"id\": \"c12bbd-01\"}, {\"url\": \"https://realpython.com/langgraph-python\", \"title\": \"LangGraph Tutorial: Build Stateful AI Agents in Python\", \"content\": \"This command will install the latest version of LangGraph from PyPI onto your machine. This tutorial was written for LangGraph 1.2, and the graph-building API that you\\u2019ll use here has been stable since the 1.0 long-term support release. To verify that the installation was successful, start a Python REPL and import LangGraph:\\n\\nLanguage: Python\\n\\n```\\n>>> import  langgraph\\n```\", \"score\": 0.9623913, \"raw_content\": null, \"id\": \"14eeae-02\"}], \"response_time\": 0.0, \"request_id\": \"a910ace1-47f5-4c03-b69e-43318da060f7\"}",
+          "name": "web_search"
+        },
+        {
+          "role": "tool",
+          "content": "{\"query\": \"langgraph pypi latest version\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"url\": \"https://pepy.tech/projects/langgraph\", \"title\": \"langgraph \\u00b7 540.6M downloads on PyPI\", \"content\": \"pepy.tech\\n\\nLoginSign up \\u2192\\n\\n# langgraph\\n\\nBuilding stateful, multi-actor applications with LLMs\\n\\nlanggraphhas been downloaded 540,593,841times in total on PyPI, including 67,082,028in the last 30 days.The latest version is 1.2.1, released May 21, 2026.\\n\\nVersion1.2.1\\n\\nDownloads\\n\\nLicense\\u2014\\n\\nAuthor\\u2014\\n\\nUpdatedMay 21, 2026\\n\\nSource \\u2192PyPI \\u2192\\n\\n## Downloads\\n\\nWeekly, last 90d.  \\nIncludes CI traffic.\\n\\nVersionsTotal1.\\\\0.\\\\\\n\\nRange\\u00b7\\u00b7\\u00b7\\n\\nView\\u00b7\\u00b7\\n\\nGranularity\\u00b7\\u00b7\\n\\nGroup by\\u00b7\\n\\nCI traffic\\u00b7 [...] Thirteen recent days of`langgraph` downloads. Drag the green handle on the right to guess where day fourteen lands. [...] CI traffic\\u00b7\\n\\nStack: Off\\u00b7CI: Included\\u00b73 / 277 series\\n\\nSelected total\\u00b7404.69M\\n\\n540.6MAll-time\\n\\n67.1MLast 30 days\\n\\n806.1kLast 24 h\\n\\n18.72/sPer second\\n\\nSponsored\\n\\nSponsorships keep pepy free to read\\n\\n## Version distribution\\n\\nShare of downloads by released version. Computed over the last quarter.\\n\\nLast 90 days \\u00b7 top 8\\n\\n 01\\n\\n  ### 1.2.9\\n\\n  19.2M downloads\\n\\n  9.5%\\n\\n  Downloads19.2M\\n\\n  9.5%\\n 02\\n\\n  ### 1.0.10\\n\\n  17.7M downloads\\n\\n  8.8%\\n\\n  Downloads17.7M\\n\\n  8.8%\\n 03\\n\\n  ### 1.2.6\\n\\n  13.9M downloads\", \"score\": 0.9974788, \"raw_content\": null, \"id\": \"31886d-00\"}, {\"url\": \"https://pypistats.org/packages/langgraph\", \"title\": \"PyPI Download Stats\", \"content\": \"# PyPI Stats\\n\\nSearch   \\n   \\n All packages   \\n Top packages   \\n   \\n Track packages\\n\\n# langgraph\\n\\nPyPI page   \\n Home page   \\n Author: None   \\n Summary: Building stateful, multi-actor applications with LLMs   \\n Latest version: 1.2.11   \\n Required dependencies: langchain-core | langgraph-checkpoint | langgraph-prebuilt | langgraph-sdk | pydantic | xxhash   \\n   \\n Downloads last day: 2,493,477   \\n Downloads last week: 16,615,254   \\n Downloads last month: 71,995,453\", \"score\": 0.99666256, \"raw_content\": null, \"id\": \"7027f9-01\"}, {\"url\": \"https://realpython.com/langgraph-python\", \"title\": \"LangGraph Tutorial: Build Stateful AI Agents in Python\", \"content\": \"This command will install the latest version of LangGraph from PyPI onto your machine. This tutorial was written for LangGraph 1.2, and the graph-building API that you\\u2019ll use here has been stable since the 1.0 long-term support release. To verify that the installation was successful, start a Python REPL and import LangGraph:\\n\\nLanguage: Python\\n\\n```\\n>>> import  langgraph\\n```\", \"score\": 0.9623913, \"raw_content\": null, \"id\": \"cc6c1b-02\"}], \"response_time\": 0.0, \"request_id\": \"f1022884-51b1-42da-a75f-3982a9133917\"}",
+          "name": "web_search"
+        },
+        {
+          "role": "assistant",
+          "content": "Both search attempts gave consistent results, though the two sources differ slightly (pepy.tech shows 1.2.1 as \"latest,\" which appears stale, while pypistats.org lists 1.2.11, which is more current and part of the same release series). According to PyPI Stats (pypistats.org), the latest released version of the `langgraph` package is **1.2.11**."
+        }
+      ],
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "langgraph pypi latest version"
+          }
+        },
+        {
+          "name": "web_search",
+          "args": {
+            "query": "langgraph pypi latest version"
+          }
+        }
+      ],
+      "evidence": [
+        "{\"query\": \"langgraph pypi latest version\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"url\": \"https://pepy.tech/projects/langgraph\", \"title\": \"langgraph \\u00b7 540.6M downloads on PyPI\", \"content\": \"pepy.tech\\n\\nLoginSign up \\u2192\\n\\n# langgraph\\n\\nBuilding stateful, multi-actor applications with LLMs\\n\\nlanggraphhas been downloaded 540,593,841times in total on PyPI, including 67,082,028in the last 30 days.The latest version is 1.2.1, released May 21, 2026.\\n\\nVersion1.2.1\\n\\nDownloads\\n\\nLicense\\u2014\\n\\nAuthor\\u2014\\n\\nUpdatedMay 21, 2026\\n\\nSource \\u2192PyPI \\u2192\\n\\n## Downloads\\n\\nWeekly, last 90d.  \\nIncludes CI traffic.\\n\\nVersionsTotal1.\\\\0.\\\\\\n\\nRange\\u00b7\\u00b7\\u00b7\\n\\nView\\u00b7\\u00b7\\n\\nGranularity\\u00b7\\u00b7\\n\\nGroup by\\u00b7\\n\\nCI traffic\\u00b7 [...] Thirteen recent days of`langgraph` downloads. Drag the green handle on the right to guess where day fourteen lands. [...] CI traffic\\u00b7\\n\\nStack: Off\\u00b7CI: Included\\u00b73 / 277 series\\n\\nSelected total\\u00b7404.69M\\n\\n540.6MAll-time\\n\\n67.1MLast 30 days\\n\\n806.1kLast 24 h\\n\\n18.72/sPer second\\n\\nSponsored\\n\\nSponsorships keep pepy free to read\\n\\n## Version distribution\\n\\nShare of downloads by released version. Computed over the last quarter.\\n\\nLast 90 days \\u00b7 top 8\\n\\n 01\\n\\n  ### 1.2.9\\n\\n  19.2M downloads\\n\\n  9.5%\\n\\n  Downloads19.2M\\n\\n  9.5%\\n 02\\n\\n  ### 1.0.10\\n\\n  17.7M downloads\\n\\n  8.8%\\n\\n  Downloads17.7M\\n\\n  8.8%\\n 03\\n\\n  ### 1.2.6\\n\\n  13.9M downloads\", \"score\": 0.9974788, \"raw_content\": null, \"id\": \"979554-00\"}, {\"url\": \"https://pypistats.org/packages/langgraph\", \"title\": \"PyPI Download Stats\", \"content\": \"# PyPI Stats\\n\\nSearch   \\n   \\n All packages   \\n Top packages   \\n   \\n Track packages\\n\\n# langgraph\\n\\nPyPI page   \\n Home page   \\n Author: None   \\n Summary: Building stateful, multi-actor applications with LLMs   \\n Latest version: 1.2.11   \\n Required dependencies: langchain-core | langgraph-checkpoint | langgraph-prebuilt | langgraph-sdk | pydantic | xxhash   \\n   \\n Downloads last day: 2,493,477   \\n Downloads last week: 16,615,254   \\n Downloads last month: 71,995,453\", \"score\": 0.99666256, \"raw_content\": null, \"id\": \"c12bbd-01\"}, {\"url\": \"https://realpython.com/langgraph-python\", \"title\": \"LangGraph Tutorial: Build Stateful AI Agents in Python\", \"content\": \"This command will install the latest version of LangGraph from PyPI onto your machine. This tutorial was written for LangGraph 1.2, and the graph-building API that you\\u2019ll use here has been stable since the 1.0 long-term support release. To verify that the installation was successful, start a Python REPL and import LangGraph:\\n\\nLanguage: Python\\n\\n```\\n>>> import  langgraph\\n```\", \"score\": 0.9623913, \"raw_content\": null, \"id\": \"14eeae-02\"}], \"response_time\": 0.0, \"request_id\": \"a910ace1-47f5-4c03-b69e-43318da060f7\"}",
+        "{\"query\": \"langgraph pypi latest version\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"url\": \"https://pepy.tech/projects/langgraph\", \"title\": \"langgraph \\u00b7 540.6M downloads on PyPI\", \"content\": \"pepy.tech\\n\\nLoginSign up \\u2192\\n\\n# langgraph\\n\\nBuilding stateful, multi-actor applications with LLMs\\n\\nlanggraphhas been downloaded 540,593,841times in total on PyPI, including 67,082,028in the last 30 days.The latest version is 1.2.1, released May 21, 2026.\\n\\nVersion1.2.1\\n\\nDownloads\\n\\nLicense\\u2014\\n\\nAuthor\\u2014\\n\\nUpdatedMay 21, 2026\\n\\nSource \\u2192PyPI \\u2192\\n\\n## Downloads\\n\\nWeekly, last 90d.  \\nIncludes CI traffic.\\n\\nVersionsTotal1.\\\\0.\\\\\\n\\nRange\\u00b7\\u00b7\\u00b7\\n\\nView\\u00b7\\u00b7\\n\\nGranularity\\u00b7\\u00b7\\n\\nGroup by\\u00b7\\n\\nCI traffic\\u00b7 [...] Thirteen recent days of`langgraph` downloads. Drag the green handle on the right to guess where day fourteen lands. [...] CI traffic\\u00b7\\n\\nStack: Off\\u00b7CI: Included\\u00b73 / 277 series\\n\\nSelected total\\u00b7404.69M\\n\\n540.6MAll-time\\n\\n67.1MLast 30 days\\n\\n806.1kLast 24 h\\n\\n18.72/sPer second\\n\\nSponsored\\n\\nSponsorships keep pepy free to read\\n\\n## Version distribution\\n\\nShare of downloads by released version. Computed over the last quarter.\\n\\nLast 90 days \\u00b7 top 8\\n\\n 01\\n\\n  ### 1.2.9\\n\\n  19.2M downloads\\n\\n  9.5%\\n\\n  Downloads19.2M\\n\\n  9.5%\\n 02\\n\\n  ### 1.0.10\\n\\n  17.7M downloads\\n\\n  8.8%\\n\\n  Downloads17.7M\\n\\n  8.8%\\n 03\\n\\n  ### 1.2.6\\n\\n  13.9M downloads\", \"score\": 0.9974788, \"raw_content\": null, \"id\": \"31886d-00\"}, {\"url\": \"https://pypistats.org/packages/langgraph\", \"title\": \"PyPI Download Stats\", \"content\": \"# PyPI Stats\\n\\nSearch   \\n   \\n All packages   \\n Top packages   \\n   \\n Track packages\\n\\n# langgraph\\n\\nPyPI page   \\n Home page   \\n Author: None   \\n Summary: Building stateful, multi-actor applications with LLMs   \\n Latest version: 1.2.11   \\n Required dependencies: langchain-core | langgraph-checkpoint | langgraph-prebuilt | langgraph-sdk | pydantic | xxhash   \\n   \\n Downloads last day: 2,493,477   \\n Downloads last week: 16,615,254   \\n Downloads last month: 71,995,453\", \"score\": 0.99666256, \"raw_content\": null, \"id\": \"7027f9-01\"}, {\"url\": \"https://realpython.com/langgraph-python\", \"title\": \"LangGraph Tutorial: Build Stateful AI Agents in Python\", \"content\": \"This command will install the latest version of LangGraph from PyPI onto your machine. This tutorial was written for LangGraph 1.2, and the graph-building API that you\\u2019ll use here has been stable since the 1.0 long-term support release. To verify that the installation was successful, start a Python REPL and import LangGraph:\\n\\nLanguage: Python\\n\\n```\\n>>> import  langgraph\\n```\", \"score\": 0.9623913, \"raw_content\": null, \"id\": \"cc6c1b-02\"}], \"response_time\": 0.0, \"request_id\": \"f1022884-51b1-42da-a75f-3982a9133917\"}"
+      ]
+    },
+    {
+      "seed": "empty_search",
+      "answer": "I was unable to retrieve live search results confirming the exact current version number. Based on the latest known release history prior to my knowledge cutoff, `langgraph` on PyPI had reached the 0.2.x series (with versions like 0.2.60+ being released in late 2024), and by early-to-mid 2025 it progressed into the 0.3.x/0.4.x range as LangChain's team continued frequent releases.\n\nI could not verify the precise latest version via search just now (no results returned), so I recommend checking https://pypi.org/project/langgraph/ directly for the exact current version number, as this package is updated very frequently (often multiple releases per week).",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the latest released version of the `langgraph` package on PyPI?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "name": "web_search",
+              "args": {
+                "query": "langgraph pypi latest version"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "[]",
+          "name": "web_search"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "name": "web_search",
+              "args": {
+                "query": "langgraph PyPI package version release"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "[]",
+          "name": "web_search"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "name": "web_search",
+              "args": {
+                "query": "\"langgraph\" pypi.org project"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "[]",
+          "name": "web_search"
+        },
+        {
+          "role": "assistant",
+          "content": "I was unable to retrieve live search results confirming the exact current version number. Based on the latest known release history prior to my knowledge cutoff, `langgraph` on PyPI had reached the 0.2.x series (with versions like 0.2.60+ being released in late 2024), and by early-to-mid 2025 it progressed into the 0.3.x/0.4.x range as LangChain's team continued frequent releases.\n\nI could not verify the precise latest version via search just now (no results returned), so I recommend checking https://pypi.org/project/langgraph/ directly for the exact current version number, as this package is updated very frequently (often multiple releases per week)."
+        }
+      ],
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "langgraph pypi latest version"
+          }
+        },
+        {
+          "name": "web_search",
+          "args": {
+            "query": "langgraph PyPI package version release"
+          }
+        },
+        {
+          "name": "web_search",
+          "args": {
+            "query": "\"langgraph\" pypi.org project"
+          }
+        }
+      ],
+      "evidence": [
+        "[]",
+        "[]",
+        "[]"
+      ]
+    },
+    {
+      "seed": "empty_search",
+      "answer": "I was unable to retrieve live search results to confirm the exact current version number from PyPI. Based on the last known information available to me, langgraph has been in active development with frequent releases in the 0.2.x/0.3.x range throughout 2024-2025.\n\nI don't have reliable up-to-date search access at this moment to confirm the precise latest version. To get the exact current version, please check https://pypi.org/project/langgraph/ directly, or run `pip index versions langgraph`.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the latest released version of the `langgraph` package on PyPI?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "name": "web_search",
+              "args": {
+                "query": "langgraph pypi latest version"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "[]",
+          "name": "web_search"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "name": "web_search",
+              "args": {
+                "query": "\"langgraph\" pypi.org project releases"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "[]",
+          "name": "web_search"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "name": "web_search",
+              "args": {
+                "query": "langgraph 0. release changelog github"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "[]",
+          "name": "web_search"
+        },
+        {
+          "role": "assistant",
+          "content": "I was unable to retrieve live search results to confirm the exact current version number from PyPI. Based on the last known information available to me, langgraph has been in active development with frequent releases in the 0.2.x/0.3.x range throughout 2024-2025.\n\nI don't have reliable up-to-date search access at this moment to confirm the precise latest version. To get the exact current version, please check https://pypi.org/project/langgraph/ directly, or run `pip index versions langgraph`."
+        }
+      ],
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "langgraph pypi latest version"
+          }
+        },
+        {
+          "name": "web_search",
+          "args": {
+            "query": "\"langgraph\" pypi.org project releases"
+          }
+        },
+        {
+          "name": "web_search",
+          "args": {
+            "query": "langgraph 0. release changelog github"
+          }
+        }
+      ],
+      "evidence": [
+        "[]",
+        "[]",
+        "[]"
+      ]
+    }
+  ]
+}
