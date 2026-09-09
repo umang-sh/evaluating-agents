@@ -5,3 +5,12 @@ __pycache__/
 session3_preflight_runs.json
 *.csv
 .ipynb_checkpoints/
+
+.DS_Store
+deck/
+*_files.zip
+deck_numbers5.json
+judge_variance5.json
+injection5.json
+row_screen5.json
+sample_size5.json
