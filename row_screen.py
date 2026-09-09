@@ -292,7 +292,8 @@ def screen_all(rows: list[dict], evaluators=None) -> list[RowScreen]:
     return [screen_row(r, evaluators) for r in rows]
 
 
-def print_screen(screens: list[RowScreen], verbose: bool = True) -> bool:
+def print_screen(screens: list[RowScreen], verbose: bool = True,
+                 whose: str = "your") -> bool:
     """Print the table.  True only if every row SHIPS."""
     print(f"\n{'row screen':<62} verdict")
     print("-" * 78)
@@ -315,7 +316,8 @@ def print_screen(screens: list[RowScreen], verbose: bool = True) -> bool:
             got = ",".join(sorted(s.caught)) or "(nothing)"
             print(f"  [{mark}] {s.question[:24]:<26}{said[:28]:<30}{got[:28]:<30}")
         print("-" * 94)
-        print(f"  you predicted {hits}/{len(scored)} of your own rows correctly")
+        owner = "your own rows" if whose == "your" else f"{whose} rows"
+        print(f"  you predicted {hits}/{len(scored)} of {owner} correctly")
         if hits == len(scored):
             print("  All hits. Either you understand the screener, or your rows are too")
             print("  easy to be interesting. Write a row you are UNSURE about.")
@@ -324,8 +326,8 @@ def print_screen(screens: list[RowScreen], verbose: bool = True) -> bool:
             print("  about how your row would break and the screener disagreed --")
             print("  that is the whole reason we asked you to write it down first.")
     else:
-        print("\n  No predictions recorded. Fill in `predict` on your rows -- a row you")
-        print("  cannot be wrong about teaches you nothing when you screen it.")
+        print(f"\n  No predictions recorded. Fill in `predict` on {whose} rows -- a row")
+        print("  you cannot be wrong about teaches you nothing when you screen it.")
 
     if verbose:
         for s in screens:

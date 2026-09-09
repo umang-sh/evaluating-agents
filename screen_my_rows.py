@@ -2,12 +2,27 @@
 """
 Screen the rows in benchmark_rows.py.  Two seconds, no API key, no cost.
 
-    python screen_my_rows.py            # your two rows
-    python screen_my_rows.py --worked   # the three worked examples too
-    python screen_my_rows.py --pool     # what would be pushed, with author stamps
+    python screen_my_rows.py                    # your two rows
+    python screen_my_rows.py --worked           # the three worked examples too
+    python screen_my_rows.py --pool             # what would be pushed, with author stamps
+    python screen_my_rows.py --file rows.py     # SOMEONE ELSE'S rows (Hands-on 2)
 
 Exit 0 = every row ships.  Exit 1 = at least one row is RETIRE or BROKEN, and
 the output names which bet it failed to make.
+
+SCREENING A ROW YOU DID NOT WRITE
+---------------------------------
+`--file` points the screener at another pair's `benchmark_rows.py`. That is
+Hands-on 2, and it is a different exercise from Hands-on 1 on purpose.
+
+Predicting your OWN row is contaminated: you know what you meant it to catch, so
+a HIT proves you can remember your own intent. Predicting a STRANGER'S row is the
+real skill -- you have to read the fields and work out what bet they actually made,
+which is not always the bet they thought they were making. That is what reviewing
+a colleague's benchmark is, and it is where most of the surprises live.
+
+Edit the `predict` list on their rows to YOUR guess before you run it. Their rows
+are not modified on disk; you are working on a copy.
 
 WHAT "SHIPS" DOES NOT MEAN
 --------------------------
@@ -48,10 +63,10 @@ ADVICE = {
 }
 
 
-def report(screens, label: str) -> bool:
-    print(BANNER)
+def report(screens, label: str, whose: str = "your") -> bool:
+    print(BANNER.replace("your row", "this row" if whose != "your" else "your row"))
     print(f"  {label}\n")
-    ok = row_screen.print_screen(screens, verbose=False)
+    ok = row_screen.print_screen(screens, verbose=False, whose=whose)
 
     for s in screens:
         if s.verdict == "SHIPS":
@@ -71,7 +86,7 @@ def report(screens, label: str) -> bool:
             print(f"      {ADVICE['broken']}")
 
     todo = [s for s in screens if "TODO" in s.question or s.category == "TODO"]
-    if todo:
+    if todo and whose == "your":
         print(f"\n  {len(todo)} row(s) still say TODO. Those are placeholders, not rows.")
         ok = False
 
@@ -81,13 +96,54 @@ def report(screens, label: str) -> bool:
     return ok
 
 
+def load_rows_from(path: str):
+    """Load MY_ROWS out of another pair's file. Returns None (having said why) if
+    the file is unusable -- at minute 35 an explanation beats a traceback."""
+    import importlib.util
+    import os
+
+    if not os.path.exists(path):
+        print(f"\nNo such file: {path}")
+        print("Ask them for their benchmark_rows.py, or drop it in this folder as")
+        print("partner_rows.py and run:  python screen_my_rows.py --file partner_rows.py")
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location("_partner", path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)            # type: ignore[union-attr]
+    except Exception as exc:
+        print(f"\nCould not load {path}: {type(exc).__name__}: {exc}")
+        print("Their file has a syntax error. Tell them -- that is a finding too.")
+        return None
+
+    rows = [r for r in getattr(mod, "MY_ROWS", [])
+            if "TODO" not in str(r["inputs"]["question"])]
+    if not rows:
+        print(f"\n{path} has no finished rows yet. Swap with a different pair.")
+        return None
+
+    author = getattr(mod, "AUTHOR", "unknown")
+    print(f"\n  screening {len(rows)} row(s) by: {author}")
+    if any(r.get("predict") for r in rows):
+        print("  NOTE: their `predict` lists are still in the file. Overwrite them")
+        print("  with YOUR guess before you run this, or you are grading their bet,")
+        print("  not making your own.")
+    return rows
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--worked", action="store_true", help="include the worked examples")
     ap.add_argument("--pool", action="store_true", help="screen the author-stamped rows")
+    ap.add_argument("--file", metavar="PATH",
+                    help="screen ANOTHER pair's benchmark_rows.py (Hands-on 2)")
     args = ap.parse_args()
 
-    if args.pool:
+    if args.file:
+        rows, label = load_rows_from(args.file), f"rows from {args.file}"
+        if rows is None:
+            return 1
+    elif args.pool:
         rows, label = benchmark_rows.rows_for_pool(), "your rows, as they would be pushed"
     elif args.worked:
         rows = list(benchmark_rows.WORKED) + list(benchmark_rows.MY_ROWS)
@@ -98,7 +154,8 @@ def main() -> int:
     if not rows:
         print("benchmark_rows.MY_ROWS is empty. Write a row first.")
         return 1
-    return 0 if report(row_screen.screen_all(rows), label) else 1
+    whose = "their" if args.file else "your"
+    return 0 if report(row_screen.screen_all(rows), label, whose) else 1
 
 
 if __name__ == "__main__":

@@ -55,18 +55,22 @@ __version__ = "s4-2026-09-01a"
 #      real case and your rule will meet it within ten minutes.
 # ==========================================================================
 
+
 def my_tool_check(outputs: dict, reference_outputs: dict) -> dict:
-    used      = {tc["name"] for tc in outputs.get("tool_calls", [])}
-    expected  = set(reference_outputs.get("expected_tools", []) or [])
+    used = {tc["name"] for tc in outputs.get("tool_calls", [])}
+    expected = set(reference_outputs.get("expected_tools", []) or [])
     forbidden = set(reference_outputs.get("forbidden_tools", []) or [])
 
     # TODO: set `ok` to True only when the agent used every expected tool
     #       and none of the forbidden ones.
-    ok = True   # <-- REPLACE THIS
-
-    return {"key": "my_tool_check", "score": ok,
-            "comment": f"used={sorted(used)} expected={sorted(expected)} "
-                       f"forbidden={sorted(forbidden)}"}
+    # ok = True   # <-- REPLACE THIS
+    ok = not (expected - used) and not (used & forbidden)
+    return {
+        "key": "my_tool_check",
+        "score": ok,
+        "comment": f"used={sorted(used)} expected={sorted(expected)} "
+        f"forbidden={sorted(forbidden)}",
+    }
 
 
 # ==========================================================================
@@ -85,17 +89,17 @@ def my_tool_check(outputs: dict, reference_outputs: dict) -> dict:
 #   - did the agent answer without calling any tool?
 # ==========================================================================
 
+
 def my_own_check(outputs: dict, reference_outputs: dict) -> dict:
     # TODO: your rule. Delete this function entirely if you are not doing
     #       exercise 2 -- an evaluator that always returns None is worse
     #       than no evaluator, because a column of blanks reads as passes.
-    return {"key": "my_own_check", "score": None,
-            "comment": "not implemented"}
+    return {"key": "my_own_check", "score": None, "comment": "not implemented"}
 
 
 # What the test script and the notebook both run.
 # Comment out my_own_check if you are skipping exercise 2.
 MY_EVALUATORS = [
     my_tool_check,
-    my_own_check,
+    # my_own_check,
 ]
