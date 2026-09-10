@@ -14,3 +14,11 @@ judge_variance5.json
 injection5.json
 row_screen5.json
 sample_size5.json
+# Session 6 instructor rehearsal (never commit)
+criteria6_instructor.py
+report6_instructor_rehearsal.md
+runs6_UNVERIFIED.json
+ls_state6.py
+add_cost6.py
+Claude outputs/
+preflight6.py

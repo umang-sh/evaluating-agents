@@ -27,7 +27,8 @@ import argparse
 import json
 import statistics
 import sys
-from collections import defaultdict
+import textwrap
+from collections import Counter, defaultdict
 
 REG_DATASET = "s6-regression-baseline"
 REG_TAG = "baseline-healthy"
@@ -86,12 +87,26 @@ def main() -> int:
         payload.append({"inputs": r["inputs"], "outputs": ref,
                         "metadata": dict(r.get("metadata", {}), baseline_of=BASELINE_VERSION)})
 
-    print(f"  {len(payload)} rows, baseline = median of {BASELINE_VERSION}'s runs per question")
-    for p in payload[:3]:
-        b = p["outputs"]["baseline"]
-        print(f"    {p['inputs']['question'][:48]:<48} tokens {b['tokens_billed']:>7.0f}  "
-              f"searches {b['n_searches']:.0f}")
-    print("    ...")
+    print(f"  {len(payload)} rows. Each row's baseline = the median of {BASELINE_VERSION.upper()}'s runs on that row.")
+    print(f"  {BASELINE_VERSION} is the incumbent: the baseline is what production does today.")
+    print(f"  redundant and concise are NOT in the baseline -- they are the candidates scored against it.")
+    print(f"  A candidate run FAILS a row if it goes more than {TOLERANCE:.0%} over that row's baseline.\n")
+    spread: dict[str, list[float]] = defaultdict(list)       # healthy's tokens, per question
+    for r in runs:
+        if r["version"] == BASELINE_VERSION and r.get("outputs"):
+            spread[r["question"]].append(r["outputs"]["metrics"]["tokens_billed"])
+    twice = Counter(p["inputs"]["question"] for p in payload)
+    for i, p in enumerate(payload, 1):
+        q, b = p["inputs"]["question"], p["outputs"]["baseline"]
+        t = spread[q]
+        print(textwrap.fill(f"{i:>2}. {q}", width=100, subsequent_indent="    "))
+        print(f"    baseline:  tokens {b['tokens_billed']:>7,.0f}   searches {b['n_searches']:.0f}"
+              f"      <- median of {BASELINE_VERSION}'s {b['n_runs']} runs")
+        print(f"    {BASELINE_VERSION}'s runs: cheapest {min(t):>7,.0f}   priciest {max(t):>7,.0f}   "
+              f"mean {statistics.fmean(t):>7,.0f}")
+        if twice[q] > 1:
+            print("    (this question is in the dataset twice: both rows share one baseline)")
+        print()
     if args.dry:
         print("  --dry: nothing pushed.")
         return 0
