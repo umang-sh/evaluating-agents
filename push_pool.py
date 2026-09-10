@@ -142,6 +142,15 @@ def show(tag: str) -> int:
 
 
 def main() -> int:
+    # Every other script that talks to LangSmith loads .env; this one did not,
+    # so with the key only in .env, push/--show 401'd ("Invalid token") and the
+    # pool was never pushed. Found 10 Sep by preflight6 check 6.
+    try:
+        from dotenv import load_dotenv
+        load_dotenv()
+    except ImportError:
+        print("(python-dotenv not installed — relying on the ambient environment)")
+
     ap = argparse.ArgumentParser()
     ap.add_argument("files", nargs="*", default=["benchmark_rows.py"],
                     help="student row files (default: benchmark_rows.py)")

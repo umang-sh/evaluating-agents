@@ -772,11 +772,11 @@ class Discrimination:
             # column of blanks on the experiment table, and students read
             # blanks as passes.
             return "ALL-SKIP (never applied - do not ship it)"
-            return (
-                "ALL-PASS (no evidence it can fail — blunt evaluator, or rows too easy)"
-                if self.passed
-                else "ALL-FAIL (impossible bar, or broken)"
-            )
+        return (
+            "ALL-PASS (no evidence it can fail — blunt evaluator, or rows too easy)"
+            if self.passed
+            else "ALL-FAIL (impossible bar, or broken)"
+        )
 
 
 def discrimination_report(rows: list[dict]) -> dict[str, Discrimination]:

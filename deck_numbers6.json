@@ -1,0 +1,191 @@
+{
+  "min_detectable_pct_12rows": {
+    "1": 50,
+    "3": 29,
+    "5": 22
+  },
+  "distinct_questions": 11,
+  "rows": 12,
+  "sigma": {
+    "sigma": 2298,
+    "df": 49,
+    "mean": 5230,
+    "cv": 0.439,
+    "s5_sigma": 2444,
+    "s5_mean": 6174,
+    "s5_df": 3,
+    "concentration": {
+      "top_row": "Find the latest released version of the `langgraph` package, then state the minimum `langchain-core` version that release requires.",
+      "top_share": 0.985,
+      "top_sd": 7980,
+      "top_mean": 25368,
+      "rest_sigma": 297,
+      "rest_mean": 3399,
+      "rest_cv": 0.087
+    }
+  },
+  "redundant": {
+    "n_searches": {
+      "n": 11,
+      "base": 1.4,
+      "cand": 2.436,
+      "diff": 1.036,
+      "lo": 0.634,
+      "hi": 1.439,
+      "pct": 74.026,
+      "pct_lo": 45.294,
+      "pct_hi": 102.758,
+      "verdict": "REGRESSION"
+    },
+    "tokens_billed": {
+      "n": 11,
+      "base": 5396.755,
+      "cand": 7858.873,
+      "diff": 2462.118,
+      "lo": 951.302,
+      "hi": 3972.934,
+      "pct": 45.622,
+      "pct_lo": 17.627,
+      "pct_hi": 73.617,
+      "verdict": "REGRESSION"
+    },
+    "outcome_keyword": {
+      "n": 11,
+      "base": 1.0,
+      "cand": 1.0,
+      "diff": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "pct": 0.0,
+      "pct_lo": 0.0,
+      "pct_hi": 0.0,
+      "verdict": "NO DETECTABLE DIFFERENCE"
+    },
+    "latency_s": {
+      "n": 11,
+      "base": 8.232,
+      "cand": 8.824,
+      "diff": 0.592,
+      "lo": -0.151,
+      "hi": 1.335,
+      "pct": 7.19,
+      "pct_lo": -1.836,
+      "pct_hi": 16.215,
+      "verdict": "NO DETECTABLE DIFFERENCE"
+    },
+    "decision": [
+      "KEEP healthy",
+      "success tied; tokens_billed detectably higher"
+    ],
+    "tokens_row_pcts": {
+      "Find the latest released version of the `langgraph` package,": 35.1,
+      "In LangSmith, what does an ONLINE evaluator not receive that": 70.9,
+      "Summarise the three most common failure modes of tool-using ": -1.9,
+      "What is the current released version of `langgraph`, accordi": 68.7,
+      "What is the latest released version of the `langgraph` packa": 68.6,
+      "What is the latest released version of the `langsmith` packa": 63.3,
+      "What is the monthly search limit on Tavily's free tier?": 67.1,
+      "Which company maintains the LangGraph library, and in which ": 57.7,
+      "Which company maintains the Tavily search API, and what is t": 74.4,
+      "Which environment variable replaced LANGCHAIN_TRACING_V2 for": 65.2,
+      "Write a short comparison of offline and online agent evaluat": 37.1
+    },
+    "tokens_median_row_pct": 65.2,
+    "tokens_without_biggest_row": {
+      "n": 10,
+      "base": 5629.13,
+      "cand": 8108.92,
+      "diff": 2479.79,
+      "lo": 784.607,
+      "hi": 4174.973,
+      "pct": 44.053,
+      "pct_lo": 13.938,
+      "pct_hi": 74.167,
+      "verdict": "REGRESSION"
+    }
+  },
+  "concise": {
+    "outcome_keyword": {
+      "n": 11,
+      "base": 1.0,
+      "cand": 1.0,
+      "diff": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "pct": 0.0,
+      "pct_lo": 0.0,
+      "pct_hi": 0.0,
+      "verdict": "NO DETECTABLE DIFFERENCE"
+    },
+    "tokens_billed": {
+      "n": 11,
+      "base": 5396.755,
+      "cand": 3992.545,
+      "diff": -1404.209,
+      "lo": -4035.592,
+      "hi": 1227.174,
+      "pct": -26.02,
+      "pct_lo": -74.778,
+      "pct_hi": 22.739,
+      "verdict": "NO DETECTABLE DIFFERENCE"
+    },
+    "answer_chars": {
+      "n": 11,
+      "base": 567.173,
+      "cand": 433.945,
+      "diff": -133.227,
+      "lo": -412.799,
+      "hi": 146.344,
+      "pct": -23.49,
+      "pct_lo": -72.782,
+      "pct_hi": 25.802,
+      "verdict": "NO DETECTABLE DIFFERENCE"
+    },
+    "latency_s": {
+      "n": 11,
+      "base": 8.232,
+      "cand": 6.822,
+      "diff": -1.41,
+      "lo": -3.025,
+      "hi": 0.204,
+      "pct": -17.13,
+      "pct_lo": -36.742,
+      "pct_hi": 2.482,
+      "verdict": "NO DETECTABLE DIFFERENCE"
+    },
+    "decision": [
+      "KEEP healthy",
+      "success tied AND tokens_billed tied -- nothing to defend"
+    ],
+    "tokens_row_pcts": {
+      "Find the latest released version of the `langgraph` package,": -51.5,
+      "In LangSmith, what does an ONLINE evaluator not receive that": 0.3,
+      "Summarise the three most common failure modes of tool-using ": -39.1,
+      "What is the current released version of `langgraph`, accordi": 1.3,
+      "What is the latest released version of the `langgraph` packa": 2.9,
+      "What is the latest released version of the `langsmith` packa": -1.4,
+      "What is the monthly search limit on Tavily's free tier?": 1.9,
+      "Which company maintains the LangGraph library, and in which ": -0.4,
+      "Which company maintains the Tavily search API, and what is t": -1.2,
+      "Which environment variable replaced LANGCHAIN_TRACING_V2 for": 2.9,
+      "Write a short comparison of offline and online agent evaluat": -16.4
+    },
+    "tokens_median_row_pct": -0.4,
+    "tokens_without_biggest_row": {
+      "n": 10,
+      "base": 3399.59,
+      "cand": 3161.82,
+      "diff": -237.77,
+      "lo": -700.932,
+      "hi": 225.392,
+      "pct": -6.994,
+      "pct_lo": -20.618,
+      "pct_hi": 6.63,
+      "verdict": "NO DETECTABLE DIFFERENCE"
+    }
+  },
+  "comparative_runs_per_example": [
+    10
+  ],
+  "generated": "2026-09-10 20:08"
+}
