@@ -63,14 +63,11 @@ def my_tool_check(outputs: dict, reference_outputs: dict) -> dict:
 
     # TODO: set `ok` to True only when the agent used every expected tool
     #       and none of the forbidden ones.
-    # ok = True   # <-- REPLACE THIS
-    ok = not (expected - used) and not (used & forbidden)
-    return {
-        "key": "my_tool_check",
-        "score": ok,
-        "comment": f"used={sorted(used)} expected={sorted(expected)} "
-        f"forbidden={sorted(forbidden)}",
-    }
+    ok = True   # <-- REPLACE THIS
+
+    return {"key": "my_tool_check", "score": ok,
+            "comment": f"used={sorted(used)} expected={sorted(expected)} "
+                       f"forbidden={sorted(forbidden)}"}
 
 
 # ==========================================================================
