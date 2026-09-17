@@ -318,52 +318,96 @@ def build_prompt(key: str, outputs: dict, machine: str) -> str:
 # ---------------------------------------------------------------------------
 # Parsing. Strict on purpose.
 # ---------------------------------------------------------------------------
-# A leading label the model may add of its own accord. The prompt no longer asks
-# for one, but a model that adds "Verdict:" is complying in substance, and this
-# course does not throw away a correct answer over a colon.
+# Formatting a model may add of its own accord. The prompt asks for two bare lines;
+# these strip what a model puts there anyway.
 #
 # WHAT THIS COST, so nobody loosens it further without reading this:
-# the first version of the prompt said "LINE 1: one word ..." and the first version
-# of this parser required line one to START with a verdict word. The model replied
-# "LINE 1: UNSOUND" -- doing exactly as told -- and all 192 live verdicts were
-# scored INSUFFICIENT-EVIDENCE. The gate then reported four DECORATION judges and a
-# NO-GO. The judge had been right every time; the harness threw the answer away.
-# Harness bug #11, and the eleventh time the measurer was at fault.
+# the first version of the prompt said "LINE 1: one word ..." and the first version of
+# this parser required line one to START with a verdict word. The model replied
+# "LINE 1: UNSOUND" -- doing exactly as told -- and all 192 live verdicts were scored
+# INSUFFICIENT-EVIDENCE. The gate then reported four DECORATION judges and a NO-GO. The
+# judge had been right every time; the harness threw the answer away. Harness bug #11.
+#
+# WHY IT IS THIS TOLERANT, which is the second lesson:
+# students run three providers (COURSE_PROVIDER = anthropic | openai | google) and they
+# do not format alike. One wraps the reply in a markdown fence, one bolds the verdict,
+# one numbers the lines, one puts the verdict and the evidence on a single line. Every
+# one of those would have scored 100% INSUFFICIENT-EVIDENCE for that student and nobody
+# else -- the same silent failure as #11, but only visible to the people least able to
+# diagnose it. A parser tuned on one provider is a parser that works for one provider.
+#
+# It is still strict about SUBSTANCE: prose with no verdict word, a number instead of a
+# word, and a verdict with no evidence are all INSUFFICIENT-EVIDENCE, counted, never
+# retried. Tolerant of format, strict about content.
+_FENCE = re.compile(r"^\s*```[a-zA-Z]*\s*$")
 _LABEL = re.compile(
-    r"^\s*(?:\*\*)?\s*(?:line\s*1|verdict|answer|line\s*one|1)\s*[:.\)-]\s*",
-    re.I)
+    r"^\s*(?:[*_#>\-\u2022]+\s*)*"                       # **bold**, ## head, - bullet, >
+    r"(?:(?:line\s*)?(?:1|2|one|two)|verdict|answer|assessment|evidence|because|"
+    r"reason(?:ing)?|justification)?"
+    r"\s*[:.\)\-\u2014]*\s*", re.I)
+_TRAIL = re.compile(r"[*_`\s]+$")
+# A verdict and its evidence on ONE line: "SOUND - the BPFO multiple matches."
+_ONELINE = re.compile(
+    r"^(SOUND|UNSOUND|INSUFFICIENT[\s\-_]?EVIDENCE)\s*[\u2014\-:,.]\s*(.+)$", re.I)
+
+
+def _clean(line: str) -> str:
+    # _LABEL eats "**Evidence:" but leaves the closing "**", so strip stray emphasis
+    # from both ends afterwards.
+    out = _TRAIL.sub("", _LABEL.sub("", line, count=1))
+    return out.strip(" *_`\u2014-").strip()
+
+
+def _word_of(line: str) -> str | None:
+    """The verdict word a line resolves to, or None. Standalone token only."""
+    head = line.upper().strip(" .:*-_`\"'\u2014")
+    head = head.replace("INSUFFICIENT EVIDENCE", "INSUFFICIENT-EVIDENCE")
+    head = head.replace("INSUFFICIENT_EVIDENCE", "INSUFFICIENT-EVIDENCE")
+    for w in VERDICT_WORDS:
+        if head == w or head.startswith(w + " ") or head.startswith(w + "\u2014"):
+            return w
+    return next((w for w in VERDICT_WORDS if head.startswith(w)), None)
 
 
 def parse_verdict(text: str) -> tuple[str, str]:
     """(verdict_word, evidence_line).
 
-    Strict on SUBSTANCE, forgiving of FORMATTING. A reply whose first line does not
-    resolve to one of the three words, or which supplies no evidence line, is
-    INSUFFICIENT-EVIDENCE -- counted, never dropped, never retried, because a judge
-    that cannot answer the question is a measurement about the judge.
-
-    But a label is not a failure to answer. `_LABEL` is stripped first, and when it
-    strips something the comment says so, so a formatting drift shows up in the
-    output instead of silently becoming a verdict nobody gave.
+    Tolerant of formatting, strict about substance. A reply that does not resolve to one
+    of the three words, or that supplies no evidence, is INSUFFICIENT-EVIDENCE -- counted,
+    never dropped, never retried, because a judge that cannot answer the question is a
+    measurement about the judge.
     """
-    lines = [ln.strip() for ln in (text or "").strip().splitlines() if ln.strip()]
+    raw_lines = [ln for ln in (text or "").splitlines()]
+    lines = [ln.strip() for ln in raw_lines
+             if ln.strip() and not _FENCE.match(ln)]
     if not lines:
         return "INSUFFICIENT-EVIDENCE", "judge returned nothing"
 
-    raw = lines[0]
-    stripped = _LABEL.sub("", raw)
-    head = stripped.upper().strip(" .:*-\"'")
-    word = next((w for w in VERDICT_WORDS if head.startswith(w)), None)
+    # The verdict is on one of the first three non-empty lines. More than that and the
+    # model ignored the instruction, which is a finding rather than something to hunt for.
+    word = None
+    idx = 0
+    for i, ln in enumerate(lines[:3]):
+        cleaned = _clean(ln)
+        w = _word_of(cleaned) or _word_of(ln)
+        if w:
+            word, idx, chosen = w, i, cleaned or ln
+            break
     if word is None:
-        return "INSUFFICIENT-EVIDENCE", f"unparseable first line: {raw[:120]!r}"
+        return "INSUFFICIENT-EVIDENCE", f"unparseable first line: {lines[0][:120]!r}"
 
-    evidence = _LABEL.sub("", lines[1]) if len(lines) > 1 else ""
-    # A label on line 2 is "LINE 2:" rather than "LINE 1:", so strip that shape too.
-    evidence = re.sub(r"^\s*(?:\*\*)?\s*(?:line\s*2|evidence|because|line\s*two|2)\s*[:.\)-]\s*",
-                      "", evidence, flags=re.I).strip()
+    # Same line? "SOUND - the BPFO multiple matches the record."
+    m = _ONELINE.match(chosen)
+    evidence = _clean(m.group(2)) if m else ""
+    if not evidence:
+        for ln in lines[idx + 1:]:
+            cand = _clean(ln)
+            if cand and not _word_of(cand):
+                evidence = cand
+                break
     if not evidence:
         return "INSUFFICIENT-EVIDENCE", f"verdict {word} with no evidence line"
-    note = "" if stripped == raw else " [label stripped]"
+    note = "" if lines[idx] == chosen and idx == 0 else " [reformatted]"
     return word, (evidence[:300] + note)
 
 
