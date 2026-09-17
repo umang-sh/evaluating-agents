@@ -22,3 +22,34 @@ ls_state6.py
 add_cost6.py
 Claude outputs/
 preflight6.py
+
+# Session 7 instructor-only (never commit)
+preflight7.py
+runs7_STUB.json
+deck_numbers7_STUB.json
+deck_numbers7.json
+nb/
+runs7_NOGO.json
+deck/plant7.json
+sweep7.py
+relabel_runs7.py
+
+# Session 8 instructor-only (never commit)
+#
+# attacks8.py is the HANDS-ON ANSWER KEY -- four verified working attacks. Committing it
+# hands the room the solutions before the exercise. It was one `git add` away from
+# shipping when the repo was reorganised.
+attacks8.py
+preflight8.py
+sweep8.py
+probe8_raw.py
+deck_numbers8.json
+deck_numbers8_STUB.json
+deck_numbers8_NOGO.json
+deck_numbers8_NOGO_PARSEBUG.json
+deck_numbers8_NOGO_MUTATORS_V1.json
+judge_runs8_STUB.json
+judge_runs8_PARSEBUG.json
+judge_runs8_MUTATORS_V1.json
+# judge_runs8.json IS committed on purpose: the notebook's [GATE] cell reads it, so
+# students see the instructor's live verdicts instead of stub numbers.

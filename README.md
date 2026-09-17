@@ -1,7 +1,45 @@
 # Evaluating AI Agents — course repo
 
-From Session 4 onward we work here rather than in Colab. Session 4 opens with
-`git pull`.
+## Where is everything?
+
+**One folder per session.** Open the folder for today's session; the notebook and the
+file you edit are both in it.
+
+| folder | session | notebook | the ONE file you edit |
+|---|---|---|---|
+| [`session-03/`](session-03/) | Comparing Agent Architectures | `—` | `test_my_tool.py` |
+| [`session-04/`](session-04/) | Designing an Agent Evaluation Pipeline | `session4_eval_pipeline.ipynb` | `my_evaluators.py` |
+| [`session-05/`](session-05/) | Building Benchmark Suites | `session5_benchmark_suites.ipynb` | `screen_my_rows.py` |
+| [`session-06/`](session-06/) | Measuring Agent Performance | `session6_measuring_performance.ipynb` | `criteria6.py` |
+| [`session-07/`](session-07/) | Evaluating Multi-Agent Systems | `session7_multi_agent.ipynb` | `my_handoffs7.py` |
+| [`session-08/`](session-08/) | Building AI-based Evaluators — LLM-as-a-Judge | `session8_llm_judges.ipynb` | `my_attack8.py` |
+
+Two folders are not sessions:
+
+| folder | what is in it |
+|---|---|
+| [`shared/`](shared/) | modules **more than one session** imports: `evalkit.py`, `paired.py`, `seeds.py`, `eval_dataset.py`, `benchmark_rows.py`, `row_screen.py`, `seeds5.py` |
+| [`plant/`](plant/) | **Halvard Works** — the fictional plant and its four agents. Sessions 7–12 all build on it, so it is not "session 7's code" any more. |
+
+`deck/`, `nb/` and `Claude outputs/` are instructor material. You never need them.
+
+## How to run anything
+
+**`cd` into the session folder first.** Everything is relative to it.
+
+```bash
+cd session-08
+python screen_my_attack.py
+```
+
+Every script starts with `import _path`, which walks up to the repo root and puts
+`shared/` and `plant/` on the import path. That is why `import evalkit` works from
+inside a session folder even though `evalkit.py` is not there. Read
+[`session-08/_path.py`](session-08/_path.py) if you want the three lines that do it.
+
+**If you see `ModuleNotFoundError: No module named 'evalkit'`** you are running from the
+wrong directory, or the script is missing its `import _path` line. Those are the only
+two causes.
 
 ## Setup (once)
 
@@ -9,24 +47,32 @@ From Session 4 onward we work here rather than in Colab. Session 4 opens with
 bash setup.sh
 source .venv/bin/activate
 cp .env.example .env      # then paste your keys in
-python check_env.py
+cd session-08 && python ../shared/check_env.py
 ```
 
-`check_env.py` prints one line. Paste it into the homework form exactly as printed
-— `GO` or `NO-GO`, both are useful.
+`check_env.py` prints one line. Paste it into the homework form exactly as printed —
+`GO` or `NO-GO`, both are useful.
 
 You need **Python 3.11+**. Pick one provider and set `COURSE_PROVIDER` in `.env` to
 match: `anthropic`, `openai` or `google`.
 
-## What is here
+## The file you edit, per session
 
-| File | What it is |
-|---|---|
-| `arch_bench.py` | Three implementations of the same research agent, and the benchmark harness |
-| `probes.py` | The probe set. Easy and hard, deliberately |
-| `preflight3.py` | Instructor GO/NO-GO verifier. Run it before a session that depends on staged behaviour. Also writes `deck_numbers.json`, which the deck reads so its charts show measured figures instead of an illustrative shape |
-| `check_env.py` | Your environment check |
-| `requirements.txt` | The pin set. Do not float these |
+You never edit a file that was given to you working. Each session has exactly one
+file with `TODO` in it, and one screener that tells you what your edit did:
+
+| session | edit | then run |
+|---|---|---|
+| 04 | `my_evaluators.py` | `python test_my_evaluators.py` |
+| 05 | `screen_my_rows.py` | `python screen_my_rows.py` |
+| 06 | `criteria6.py` | `python regress_gate.py` |
+| 07 | `my_handoffs7.py` | `python screen_my_handoffs.py` |
+| 08 | `my_attack8.py` | `python screen_my_attack.py` |
+
+A screener verdict is not a grade. It tells you whether what you wrote can fail —
+which is the whole subject of this course.
+
+---
 
 ## Running the pre-flight (instructors)
 
