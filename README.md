@@ -23,6 +23,37 @@ Two folders are not sessions:
 
 `deck/`, `nb/` and `Claude outputs/` are instructor material. You never need them.
 
+## Updating the repo — run THIS, not `git pull`
+
+```bash
+bash update.sh
+```
+
+The repo was reorganised into one folder per session. Git records that as 51 file
+**renames**, and a plain `git pull` **refuses to run** if you have uncommitted edits to a
+file that moved — which almost everyone does, because `my_handoffs7.py` was your Session 7
+homework:
+
+```
+error: Your local changes to the following files would be overwritten by merge:
+        my_handoffs7.py
+```
+
+**Nothing is lost when that happens.** The pull just stops. `update.sh` commits your work
+first, then pulls, so git merges the rename with your edit and your file reappears — with
+your changes in it — at `session-07/my_handoffs7.py`. It never uses `--force` and never
+discards anything.
+
+Then check you are ready:
+
+```bash
+cd session-08
+python doctor8.py
+```
+
+`doctor8.py` prints **GO** or **NO-GO** and, for anything that fails, the one line that
+fixes it. It needs no API key and costs nothing.
+
 ## How to run anything
 
 **`cd` into the session folder first.** Everything is relative to it.
