@@ -23,11 +23,16 @@ Two folders are not sessions:
 
 `deck/`, `nb/` and `Claude outputs/` are instructor material. You never need them.
 
-## Updating the repo — run THIS, not `git pull`
+## Updating the repo — THE FIRST TIME, run these three
 
 ```bash
-bash update.sh
+git add -A
+git commit -m "my work"
+git pull
 ```
+
+**Do not run `bash update.sh` for this first update** — it does not exist in your copy
+yet. It arrives *with* this pull, and is what you use for every update after today.
 
 The repo was reorganised into one folder per session. Git records that as 51 file
 **renames**, and a plain `git pull` **refuses to run** if you have uncommitted edits to a
@@ -39,10 +44,16 @@ error: Your local changes to the following files would be overwritten by merge:
         my_handoffs7.py
 ```
 
-**Nothing is lost when that happens.** The pull just stops. `update.sh` commits your work
-first, then pulls, so git merges the rename with your edit and your file reappears — with
-your changes in it — at `session-07/my_handoffs7.py`. It never uses `--force` and never
-discards anything.
+**Nothing is lost when that happens.** The pull just stops. Committing first is the whole
+fix: git then merges the rename with your edit and your file reappears — with your changes
+in it — at `session-07/my_handoffs7.py`.
+
+`git commit` here is not "submitting" anything. It saves your work in your own copy so the
+merge has something to merge. Nothing leaves your laptop.
+
+**If the pull still stops with a conflict:** run `git merge --abort`, then send me the
+output of `git status`. Do **not** run `git checkout .` or `git reset --hard` — those are
+the two commands that actually lose work.
 
 Then check you are ready:
 
