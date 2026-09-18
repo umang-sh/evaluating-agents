@@ -2,6 +2,8 @@
 Session 8 — the human column. One rater, and the deck says so.
 
     python human_labels8.py            # print the cases, and what is still unlabelled
+    python human_labels8.py --blind    # the same cases with MY labels hidden -- for the
+                                       # homework, where the class is the second rater
 
 WHAT THIS IS
 ------------
@@ -146,6 +148,7 @@ def report(path: str | None = None) -> dict:
         "rows": {k: {"shape": v[0]["shape"], "instances": len(v),
                      "agent_said": sorted({c["agent_said"] for c in v}),
                      "benchmark_wanted": v[0]["benchmark_wanted"],
+                     "question": v[0]["question"],
                      "label": LABELS.get(k, {}).get("verdict"),
                      "why": LABELS.get(k, {}).get("why")}
                  for k, v in by.items()},
@@ -157,18 +160,30 @@ def report(path: str | None = None) -> dict:
 
 
 if __name__ == "__main__":
+    import sys
+
+    blind = "--blind" in sys.argv
     rep = report()
-    print(f"human_labels8 {__version__}\n")
+    print(f"human_labels8 {__version__}"
+          f"{'  — BLIND: my labels are hidden' if blind else ''}\n")
     print(f"{rep['n_instances']} run-instances across {rep['n_rows']} distinct rows\n")
+    if blind:
+        print("  Write your own verdict for each row -- agent / benchmark / neither --")
+        print("  and one sentence of reasoning, BEFORE you run this again without --blind.")
+        print("  A verdict you formed after reading mine measures nothing.\n")
     for row, d in rep["rows"].items():
         print(f"  {row}  {d['shape']:19s} x{d['instances']}")
+        print(f"        the request     : {d['question']}")
         print(f"        agent said      : {', '.join(d['agent_said'])}")
         print(f"        benchmark wanted: {d['benchmark_wanted']}")
-        print(f"        label           : {d['label'] or 'UNLABELLED'}")
-        if d["why"]:
-            print(f"        why             : {d['why']}")
+        if blind:
+            print("        label           : (hidden -- run without --blind)")
+        else:
+            print(f"        label           : {d['label'] or 'UNLABELLED'}")
+            if d["why"]:
+                print(f"        why             : {d['why']}")
         print()
-    if rep["unlabelled_rows"]:
+    if rep["unlabelled_rows"] and not blind:
         print("  STILL UNLABELLED:", ", ".join(rep["unlabelled_rows"]))
         print("  The slide will say UNLABELLED rather than guess.")
     print("\n  caveat on the slide:", rep["caveat"])

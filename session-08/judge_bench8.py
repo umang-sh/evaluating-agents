@@ -1,8 +1,8 @@
 """
 Session 8 — the judge harness. One record shape, one phase field, no pooling.
 
-    python judge_bench8.py                 # stub, free, 24 verdicts
-    python judge_bench8.py --live          # real model, 24 verdicts
+    python judge_bench8.py                 # stub, free, 28 verdicts
+    python judge_bench8.py --live          # real model, 28 verdicts
     python judge_bench8.py --live --wobble 10
 
 WHAT A RECORD IS
@@ -92,7 +92,7 @@ def _record(phase: str, arm: str, judge_key: str, rep: int, result: dict,
 
 def score_arms(arms: dict[str, dict] | None = None, stub: bool = True, reps: int = 1,
                phase: str = "seeded", verbose: bool = True) -> list[dict]:
-    """Every judge against every seeded arm. 6 x 4 x reps verdicts."""
+    """Every judge against every seeded arm. 7 arms x 4 judges x reps verdicts."""
     arms = arms if arms is not None else seeds8.build()
     js = judge8.judges(stub=stub)
     recs: list[dict] = []
@@ -187,7 +187,7 @@ def main() -> int:
 
     arms = seeds8.build()
     print(f"judge_bench8 {__version__} — {'STUB (plumbing only)' if stub else 'LIVE'}\n")
-    print("SEPARATION — 6 arms x 4 judges"
+    print("SEPARATION — 7 arms x 4 judges"
           f"{' x ' + str(args.reps) + ' reps' if args.reps > 1 else ''}")
     recs = score_arms(arms, stub=stub, reps=args.reps)
 
