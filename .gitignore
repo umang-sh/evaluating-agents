@@ -53,3 +53,28 @@ judge_runs8_PARSEBUG.json
 judge_runs8_MUTATORS_V1.json
 # judge_runs8.json IS committed on purpose: the notebook's [GATE] cell reads it, so
 # students see the instructor's live verdicts instead of stub numbers.
+
+# Session 9. Same reasoning as the Session 8 entries above.
+deck_numbers9_NOGO.json
+deck/_render9/
+deck/_r/
+
+# Session 9 instructor-only (never commit)
+#
+# deck/ and nb/ are already ignored wholesale above, so make_deck9.js, extract_deck9.py,
+# deck9_data.json and build_nb9.py never reach git. deck_contract9.py is deck metadata
+# read only by the deck builder and sweep9, so it joins them.
+#
+# build_form9.gs is the Google Form builder. build_form8.gs WAS committed; this one is
+# not, by request -- the form is built once from the Apps Script editor and the file is
+# instructor tooling, not course material.
+preflight9.py
+sweep9.py
+deck_contract9.py
+build_form9.gs
+deck_numbers9.json
+deck_numbers9_STUB.json
+traj_runs9_STUB.json
+# traj_runs9.json IS committed on purpose: the notebook's [GATE] cell reads it, so
+# students see the instructor's live verdicts instead of stub numbers. Same reasoning
+# as judge_runs8.json above.

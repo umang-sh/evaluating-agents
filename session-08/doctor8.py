@@ -94,7 +94,8 @@ else:
 
 # ---------------------------------------------------------------- 6. the screener
 try:
-    import judge8
+    import _path  # noqa: F401  -- shared/ on sys.path; judge8 moved there 20 Sep
+import judge8
     import judge_seeds8 as seeds8
     arms = seeds8.build()
     res = judge8.run_all(arms["healthy"], None, stub=True)

@@ -52,40 +52,12 @@ import judge_seeds8 as seeds8
 
 __version__ = "s8-2026-09-15a"
 
-Z = 1.96
-
-
-def wilson(k: int, n: int, z: float = Z) -> tuple[float, float]:
-    """95% Wilson score interval for k successes in n trials. Never zero-width."""
-    if n == 0:
-        return 0.0, 1.0
-    p = k / n
-    d = 1 + z * z / n
-    centre = (p + z * z / (2 * n)) / d
-    half = (z / d) * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n))
-    return max(0.0, centre - half), min(1.0, centre + half)
-
-
-def rule_of_three(n: int) -> float:
-    """95% upper bound on a rate after n trials with ZERO events. Session 5's number."""
-    return 3.0 / n if n else 1.0
-
-
-def newcombe(k1: int, n1: int, k2: int, n2: int) -> tuple[float, float, float]:
-    """(difference, lo, hi) for p1 - p2, two independent proportions.
-
-    Newcombe's hybrid-score method: build each Wilson interval, then combine. Closed
-    form, small-sample honest, and it does not collapse at 0 or 1.
-    """
-    p1 = k1 / n1 if n1 else 0.0
-    p2 = k2 / n2 if n2 else 0.0
-    l1, u1 = wilson(k1, n1)
-    l2, u2 = wilson(k2, n2)
-    d = p1 - p2
-    lo = d - math.sqrt((p1 - l1) ** 2 + (u2 - p2) ** 2)
-    hi = d + math.sqrt((u1 - p1) ** 2 + (p2 - l2) ** 2)
-    return d, max(-1.0, lo), min(1.0, hi)
-
+# Wilson, the rule of three and Newcombe moved to shared/intervals.py on 20 Sep 2026
+# so Session 9 could use them too (session-09/ cannot import from session-08/).
+# Verbatim move, no formula changed. Re-exported here so every existing caller --
+# preflight8, sweep8, doctor8, the notebook -- keeps working unchanged.
+import _path  # noqa: F401  -- shared/ on sys.path; judge8 moved there 20 Sep
+from intervals import Z, newcombe, rule_of_three, wilson   # noqa: F401  (re-export)
 
 # ---------------------------------------------------------------------------
 @dataclass
