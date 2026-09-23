@@ -78,3 +78,18 @@ traj_runs9_STUB.json
 # traj_runs9.json IS committed on purpose: the notebook's [GATE] cell reads it, so
 # students see the instructor's live verdicts instead of stub numbers. Same reasoning
 # as judge_runs8.json above.
+
+# ---------------------------------------------------------------- Session 10
+# Same split as Sessions 8 and 9: the instructor's harness stays out, the material
+# students pull stays in. deck/ and nb/ are already ignored wholesale above, so
+# make_deck10.js, extract_deck10.py, make_stagecard10.py, deck10_data.json and
+# build_nb10.py never reach git. deck_contract10.py is deck metadata read only by the
+# deck builder and sweep10, so it joins them.
+preflight10.py
+sweep10.py
+deck_contract10.py
+deck_numbers10.json
+deck_numbers10_NOGO.json
+# preflight10_verdicts.json IS committed on purpose: the notebook's [VERDICTS_BLIND]
+# and [VERDICTS_REVEAL] cells read it, and beat 5 of the hands-on is nothing without
+# it. Same reasoning as traj_runs9.json and judge_runs8.json above.

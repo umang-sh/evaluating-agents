@@ -1,0 +1,369 @@
+{
+  "generated": "2026-09-22T17:35:29.794325+00:00",
+  "version": "s10-2026-09-22a",
+  "phase": "gate",
+  "complete": true,
+  "n": 40,
+  "verdicts": [
+    {
+      "phase": "gate",
+      "row_id": "HW-001",
+      "arm": "healthy",
+      "judge": "tool_fit",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 4 looks up parts_inventory(part_no='SKF-6208'), a specific part never mentioned by the engineer.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-001",
+      "arm": "healthy",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 maintenance_history for CONVEYOR was never called, leaving past work orders unchecked despite diagnosing a recurring hot/vibration fault.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-001",
+      "arm": "bad_machine_id",
+      "judge": "tool_fit",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 looks up sensor_history(machine_id='LINE4-GEARBOX') but the engineer asked about the filler infeed conveyor.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-001",
+      "arm": "bad_machine_id",
+      "judge": "search_sufficiency",
+      "score": 1,
+      "comment": "SOUND \u2014 call 1 checked LINE4-GEARBOX sensor_history instead of the conveyor, but this is a minor mismatch in an otherwise reasonable set of lookups covering equipment_kb, manuals, and parts for the conveyor issue.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-001",
+      "arm": "hallucinated_tool",
+      "judge": "tool_fit",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 uses vibration_api, a tool not in the diagnostics roster (equipment_kb, maintenance_history, sensor_history).",
+      "expected": 0
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-001",
+      "arm": "hallucinated_tool",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 uses \"vibration_api\" which is not among the tools diagnostics may call, and neither sensor_history nor maintenance_history for CONVEYOR was ever actually invoked.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-001",
+      "arm": "wrong_machine",
+      "judge": "tool_fit",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 looks up machine_id='AIR-COMP' but the engineer asked about the filler infeed conveyor.",
+      "expected": 0
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-001",
+      "arm": "wrong_machine",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 looks up machine_id='AIR-COMP' but the engineer asked about the filler infeed conveyor.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-001",
+      "arm": "dropped_lookup",
+      "judge": "tool_fit",
+      "score": 1,
+      "comment": "SOUND \u2014 all calls target CONVEYOR, matching the machine the engineer described, using appropriate tools for each agent's role.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-001",
+      "arm": "dropped_lookup",
+      "judge": "search_sufficiency",
+      "score": 1,
+      "comment": "SOUND \u2014 sensor_history, equipment_kb, and manual_search together cover diagnosing the vibration/heat alarm and identifying corrective action for the conveyor.",
+      "expected": 0
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-002",
+      "arm": "healthy",
+      "judge": "tool_fit",
+      "score": 1,
+      "comment": "SOUND \u2014 all calls target RINSE-PUMP or a plausible related part, consistent with the engineer's request.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-002",
+      "arm": "healthy",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 Gravelly noise suggests bearing/seal failure, but parts_inventory was only checked for 'STRN-PUMP-MESH' (strainer mesh), not bearings/seals matching the described fault.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-002",
+      "arm": "bad_machine_id",
+      "judge": "tool_fit",
+      "score": 1,
+      "comment": "SOUND \u2014 call 1 looks up machine_id='LINE4-GEARBOX' but the engineer asked about the rinse-water pump.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-002",
+      "arm": "bad_machine_id",
+      "judge": "search_sufficiency",
+      "score": 1,
+      "comment": "SOUND \u2014 manual_search(query='cavitation', machine_id='RINSE-PUMP') and parts_inventory(part_no='STRN-PUMP-MESH') together identify the likely cause and check parts availability, answering the engineer's question.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-002",
+      "arm": "hallucinated_tool",
+      "judge": "tool_fit",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 uses vibration_api(machine_id='RINSE-PUMP'), which is not a tool in the roster for the diagnostics agent (or any agent).",
+      "expected": 0
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-002",
+      "arm": "hallucinated_tool",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 4 checks parts_inventory for 'STRN-PUMP-MESH' (strainer mesh) despite the symptoms (gravelly noise, low discharge pressure) pointing to bearing failure, and no maintenance_history was checked to confirm the actual failure mode before ordering parts.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-002",
+      "arm": "wrong_machine",
+      "judge": "tool_fit",
+      "score": 0,
+      "comment": "UNSOUND \u2014 calls 1-3 target machine_id='AIR-COMP' instead of the rinse-water pump the engineer described.",
+      "expected": 0
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-002",
+      "arm": "wrong_machine",
+      "judge": "search_sufficiency",
+      "score": 1,
+      "comment": "SOUND \u2014 call 4 checks parts_inventory('STRN-PUMP-MESH'), directly addressing whether the parts are available to fix the pump.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-002",
+      "arm": "dropped_lookup",
+      "judge": "tool_fit",
+      "score": 1,
+      "comment": "SOUND \u2014 all calls target RINSE-PUMP with appropriate tools from each agent's allowed roster.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-002",
+      "arm": "dropped_lookup",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 The engineer explicitly asked \"Do we have the parts to fix it?\" but parts_inventory was never called.",
+      "expected": 0
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-003",
+      "arm": "healthy",
+      "judge": "tool_fit",
+      "score": 1,
+      "comment": "SOUND \u2014 all calls are directed at the FILLER machine or a part clearly related to its diagnosis, using tools appropriate to their purpose.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-003",
+      "arm": "healthy",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 maintenance_history for FILLER was never called, so nothing checked whether this overcurrent trip matches a prior recurring fault before deciding it can wait until the planned stop.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-003",
+      "arm": "bad_machine_id",
+      "judge": "tool_fit",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 looks up machine_id='LINE4-GEARBOX' but the engineer asked about the filler drive.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-003",
+      "arm": "bad_machine_id",
+      "judge": "search_sufficiency",
+      "score": 1,
+      "comment": "SOUND \u2014 call 4 checks parts_inventory for the filler capacitor kit, which addresses whether repair can wait, and call 2 checks equipment_kb(machine_id='FILLER') for criticality relevant to the deferral decision.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-003",
+      "arm": "hallucinated_tool",
+      "judge": "tool_fit",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 uses vibration_api, a tool that is not in the roster at all.",
+      "expected": 0
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-003",
+      "arm": "hallucinated_tool",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 maintenance_history for FILLER was never called, so no check whether this overcurrent tripping matches past failures despite asking \"can it wait until the planned stop\".",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-003",
+      "arm": "wrong_machine",
+      "judge": "tool_fit",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 looks up machine_id='AIR-COMP' but the engineer asked about the filler drive.",
+      "expected": 0
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-003",
+      "arm": "wrong_machine",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 and 2 look up machine_id='AIR-COMP', but the engineer asked about the filler drive.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-003",
+      "arm": "dropped_lookup",
+      "judge": "tool_fit",
+      "score": 1,
+      "comment": "SOUND \u2014 all calls target FILLER, matching the engineer's request about the filler drive tripping.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-003",
+      "arm": "dropped_lookup",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 maintenance_history for FILLER was never called, so the past work orders showing whether this overcurrent trip is a recurring issue (and whether waiting is safe) were never checked.",
+      "expected": 0
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-007",
+      "arm": "healthy",
+      "judge": "tool_fit",
+      "score": null,
+      "comment": "INSUFFICIENT-EVIDENCE \u2014 there's no evidence confirming or denying that 'CONVEYOR' is indeed the Line 3 infeed machine the engineer referred to.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-007",
+      "arm": "healthy",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 maintenance_history was never called for CONVEYOR, so past work orders on this vibration issue were never checked.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-007",
+      "arm": "bad_machine_id",
+      "judge": "tool_fit",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 looks up machine_id='LINE4-GEARBOX' but the engineer asked about the Line 3 infeed.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-007",
+      "arm": "bad_machine_id",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 looks up sensor_history(machine_id='LINE4-GEARBOX') but the engineer asked about the Line 3 infeed vibration.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-007",
+      "arm": "hallucinated_tool",
+      "judge": "tool_fit",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 uses vibration_api, a tool not in the roster's allowed list for any agent.",
+      "expected": 0
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-007",
+      "arm": "hallucinated_tool",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 uses vibration_api, which is not among the tools any agent is permitted to call, and sensor_history/maintenance_history for CONVEYOR were never actually retrieved.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-007",
+      "arm": "wrong_machine",
+      "judge": "tool_fit",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 looks up machine_id='AIR-COMP' but the engineer asked about the Line 3 infeed.",
+      "expected": 0
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-007",
+      "arm": "wrong_machine",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 call 1 looks up machine_id='AIR-COMP' but the engineer asked about the Line 3 infeed's vibration.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-007",
+      "arm": "dropped_lookup",
+      "judge": "tool_fit",
+      "score": 1,
+      "comment": "SOUND \u2014 all calls consistently target CONVEYOR, matching the reported Line 3 infeed vibration issue.",
+      "expected": 1
+    },
+    {
+      "phase": "gate",
+      "row_id": "HW-007",
+      "arm": "dropped_lookup",
+      "judge": "search_sufficiency",
+      "score": 0,
+      "comment": "UNSOUND \u2014 maintenance_history was never called, so past work orders on the vibrating equipment were never checked.",
+      "expected": 0
+    }
+  ]
+}
