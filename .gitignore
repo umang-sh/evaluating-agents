@@ -93,3 +93,4 @@ deck_numbers10_NOGO.json
 # preflight10_verdicts.json IS committed on purpose: the notebook's [VERDICTS_BLIND]
 # and [VERDICTS_REVEAL] cells read it, and beat 5 of the hands-on is nothing without
 # it. Same reasoning as traj_runs9.json and judge_runs8.json above.
+build_form10.gs
