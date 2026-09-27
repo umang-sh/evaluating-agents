@@ -562,7 +562,29 @@ def build_single(impl: Literal["llm", "stub"] = "llm"):
 # ==========================================================================
 def run_pipeline(request: str, impl: str = "llm", seed=None) -> dict:
     graph = build_pipeline(impl=impl, seed=seed)
-    state = graph.invoke({"request": request}, config={"metadata": {"arm": "pipeline"}})
+    # Session 11: stream instead of invoke, so the state after EVERY node is kept.
+    # invoke() returns only the final state; that is why no saved run before
+    # Session 11 could say what the state was mid-run. Same graph, same final state.
+    state: PlantState = {"request": request}
+    history: list[dict] = []
+    for update in graph.stream({"request": request},
+                               config={"metadata": {"arm": "pipeline"}},
+                               stream_mode="updates"):
+        for node, out in update.items():
+            before_calls = len(state.get("tool_calls", []))
+            state = {**state, **(out or {})}
+            history.append({
+                "node": node,
+                "agent": (state.get("agent_calls") or ["?"])[-1] if node == "dispatch" else node,
+                "cursor": state.get("cursor"),
+                "steps": state.get("steps"),
+                "plan_len": len(state.get("plan") or []),
+                "n_agent_calls": len(state.get("agent_calls", [])),
+                "n_reports": len(state.get("reports", [])),
+                "n_handoffs": len(state.get("handoffs", [])),
+                "new_tool_calls": state.get("tool_calls", [])[before_calls:],
+                "context": state.get("context", ""),
+            })
     tails: dict[str, str] = {}
     for r in state.get("reports", []):
         tails.update(read_tail(r["text"]))
@@ -575,6 +597,7 @@ def run_pipeline(request: str, impl: str = "llm", seed=None) -> dict:
         "tool_calls": state.get("tool_calls", []),
         "plan": state.get("plan", []),
         "tail": tails,
+        "state_history": history,
     }
 
 

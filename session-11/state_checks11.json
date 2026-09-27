@@ -1,0 +1,38 @@
+[
+ {
+  "file": "runs11.json",
+  "phase": "state_capture",
+  "impl": "llm",
+  "n_runs": 24,
+  "n_states": 98,
+  "invariant_breaks": 0,
+  "truncated": 0,
+  "hijack": [],
+  "name_as_id": [
+   "HW-001 rep1 maintenance: asked=['CONVEYOR'] used=['Filler infeed conveyor gearbox', 'CONVEYOR']",
+   "HW-006 rep1 diagnostics: asked=['BLOWER', 'CONVEYOR'] used=['air-knife blower fan', 'air-knife blower fan', 'air-knife blower fan', 'BLOWER', 'BLOWER', 'BLOWER']",
+   "HW-007 rep1 maintenance: asked=['CONVEYOR'] used=['Filler infeed conveyor gearbox', 'CONVEYOR']",
+   "HW-001 rep2 maintenance: asked=['CONVEYOR'] used=['Filler infeed conveyor gearbox', 'CONVEYOR']"
+  ],
+  "dispatches_checked": 38,
+  "runs_hijacked": 0,
+  "hijack_upper95_if_zero": 0.125
+ },
+ {
+  "file": "runs11_STUB.json",
+  "phase": "state_capture_stub",
+  "impl": "stub",
+  "n_runs": 24,
+  "n_states": 100,
+  "invariant_breaks": 0,
+  "truncated": 0,
+  "hijack": [
+   "HW-006 rep1 diagnostics: asked=['BLOWER'] used=['CONVEYOR']",
+   "HW-006 rep2 diagnostics: asked=['BLOWER'] used=['CONVEYOR']"
+  ],
+  "name_as_id": [],
+  "dispatches_checked": 38,
+  "runs_hijacked": 2,
+  "hijack_upper95_if_zero": null
+ }
+]

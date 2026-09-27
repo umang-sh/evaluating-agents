@@ -63,7 +63,7 @@ import seeds7
 from delegation_rows7 import ROWS
 from plant_agents7 import run_pipeline, run_single
 
-__version__ = "s7-2026-09-13a"
+__version__ = "s7-2026-09-25-s11state"
 
 PROJECT = "session-7-multi-agent"
 
@@ -122,6 +122,22 @@ def _token_fields(run) -> dict:
     out = int(getattr(run, "completion_tokens", 0) or 0)
     inp = int(getattr(run, "prompt_tokens", 0) or 0)
     return {"tokens_out": out, "tokens_in_uncached": inp, "tokens_billed": out + inp}
+
+
+def _final_state(out: dict) -> dict:
+    """The last state snapshot's counters, plus the one derived flag Session 11 needs.
+
+    truncated = the step cap stopped the run while plan steps were still undone.
+    finish_node writes an answer either way, so nothing else in the record says so.
+    """
+    hist = out.get("state_history") or []
+    last = next((h for h in reversed(hist) if h.get("cursor") is not None), None)
+    if last is None:
+        return {}
+    from plant_agents7 import MAX_STEPS
+    return {"cursor": last["cursor"], "steps": last["steps"], "plan_len": last["plan_len"],
+            "max_steps": MAX_STEPS,
+            "truncated": last["steps"] >= MAX_STEPS and last["cursor"] < last["plan_len"]}
 
 
 def measure(row: dict, arm: str, impl: str = "llm", seed: str = "healthy",
@@ -194,7 +210,13 @@ def measure(row: dict, arm: str, impl: str = "llm", seed: str = "healthy",
                     # Only the COUNT was persisted before, so a saved run could
                     # not answer "which tool did which agent call" -- which is
                     # the whole of Session 10. The list is small; keep it.
-                    "tool_calls": out.get("tool_calls", [])},
+                    "tool_calls": out.get("tool_calls", []),
+                    # Session 11: the state after every node, and the final
+                    # counters. Before this, `cursor`, `steps`, `context` and
+                    # `reports` were discarded on save, so no saved run could
+                    # show state at all. The single arm has no graph state: [].
+                    "state_history": out.get("state_history", []),
+                    "final_state": _final_state(out)},
         "scores": scores,
         "comments": comments,
     }
