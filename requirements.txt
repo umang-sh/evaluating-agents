@@ -20,3 +20,7 @@ langchain-google-genai==4.3.7
 
 pandas>=2.2
 python-dotenv>=1.0
+
+# Every session's notebook needs a kernel. Missing until 29 Sep: a fresh machine could
+# install everything and still not open a notebook.
+ipykernel>=6.29

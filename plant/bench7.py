@@ -63,9 +63,21 @@ import seeds7
 from delegation_rows7 import ROWS
 from plant_agents7 import run_pipeline, run_single
 
-__version__ = "s7-2026-09-25-s11state"
+__version__ = "s7-2026-09-29-s12project"
 
 PROJECT = "session-7-multi-agent"
+
+
+def traced_project() -> str:
+    """The project traces ACTUALLY go to -- ask the tracer, do not assume PROJECT.
+
+    Session 11's 24 live runs all said "no root run resolved": capture11.py loaded
+    .env (LANGSMITH_PROJECT=session-4-eval-pipeline) and never called
+    evalkit.env_setup(PROJECT), so traces were written to one project and looked
+    up in another. Nothing raised. Look up where the tracer wrote, always.
+    """
+    from langsmith import utils as ls_utils
+    return ls_utils.get_tracer_project()
 
 # Gotcha #13/#16 consequence: if the model has no pricing row, the cost wait is
 # paid on EVERY run. Latch it after the first miss -- twelve runs x 30 s is six
@@ -172,7 +184,7 @@ def measure(row: dict, arm: str, impl: str = "llm", seed: str = "healthy",
         evalkit.flush_traces()
         from langsmith import Client
         client = Client()
-        root_id = evalkit.find_trace_root(client, since=since, project=PROJECT)
+        root_id = evalkit.find_trace_root(client, since=since, project=traced_project())
         if root_id is None:
             note = "no root run resolved; token and cost columns unavailable"
         else:
@@ -270,7 +282,7 @@ def save(recs: list[dict], path: str = "runs7.json", **meta) -> str:
                          f"COMPARE cell disagree -- see run_matrix.__doc__.")
     payload = {"version": __version__,
                "generated": datetime.now().strftime("%Y-%m-%d %H:%M"),
-               "project": PROJECT, **meta, "runs": recs}
+               "project": traced_project(), **meta, "runs": recs}   # where traces went, not intent
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(payload, fh, indent=1, default=str)
     return path

@@ -1,0 +1,875 @@
+{
+ "phase": "judge_live",
+ "generated": "2026-09-29T09:05:08.471224+00:00",
+ "judges": [
+  "tool_fit",
+  "search_sufficiency"
+ ],
+ "runs": [
+  {
+   "version": "A",
+   "row_id": "HW-001",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target the CONVEYOR machine (or a part identified from its diagnosis), consistent with the engineer's request about the filler infeed conveyor."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 calls cover equipment_kb, sensor_history, maintenance_history, manual_search for diagnosis, and parts_inventory plus maintenance_history for the repair action."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-002",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target RINSE-PUMP using tools appropriate to their agent roles, matching the engineer's request."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 0,
+     "comment": "UNSOUND \u2014 The engineer asked whether they have the parts to fix it, but parts_inventory was never called."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-003",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target FILLER machine or related parts consistent with the engineer's question about the filler drive."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 7 checks parts_inventory and calls 1-6,8 cover diagnostics and manual guidance needed to judge whether waiting until the planned stop is safe."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-004",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all three calls target AIR-COMP, matching the engineer's request, using tools within the diagnostics agent's roster."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1-3 cover equipment specs, current sensor trends, and past maintenance history for AIR-COMP, which together address a general \"anything to worry about\" check."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-005",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target the BLOWER machine consistent with the air-knife blower vibration issue, using appropriate tools for each agent role."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 calls cover equipment limits (equipment_kb), current trend (sensor_history), history (maintenance_history), and manual guidance on rebalancing thresholds (manual_search), which together address whether rebalancing is needed."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-006",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target CONVEYOR or the air-knife blower (BLOWER), both explicitly mentioned by the engineer."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 both CONVEYOR and BLOWER (air-knife blower) were covered with equipment_kb, sensor_history, and maintenance_history, giving full comparative data to prioritize."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-007",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target the CONVEYOR (Line 3 infeed) or its gearbox/parts, consistent with the engineer's request, with no calls aimed at unrelated machines or tools misused."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 the calls cover equipment_kb, sensor_history, maintenance_history, manual_search, and parts_inventory for the CONVEYOR, addressing the vibration complaint end-to-end."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-008",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": null,
+     "comment": "INSUFFICIENT-EVIDENCE \u2014 no tool calls were made to evaluate"
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 0,
+     "comment": "UNSOUND \u2014 no tool calls were made at all, so nothing was looked up to explain the overcurrent trip on the Line 4 gearbox."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-009",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 searches the manuals for the balance grade tolerance spec on the BLOWER, matching exactly what the engineer asked for."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 directly targets the balance spec for the blower via manual_search, matching the engineer's request for just the spec."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-010",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 uses parts_inventory(part_no='DC-BUS-CAP-90KW-VFD'), which directly targets the DC-bus capacitor kit the engineer asked about."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 checks parts_inventory for the DC-bus capacitor kit part number, directly answering stock and cost."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-011",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all three calls target CONVEYOR, matching the engineer's question about the filler infeed conveyor."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 3 checks maintenance_history(machine_id='CONVEYOR'), directly addressing whether this matches the September failure."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-012",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target AIR-COMP, the machine in question, using appropriate tools within each agent's allowed roster."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 the calls cover equipment limits (equipment_kb, manual_search), current/recent trend (sensor_history), and history (maintenance_history) for AIR-COMP, matching the discharge temperature question."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-001",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target the CONVEYOR machine or a plausibly related bearing part, consistent with the engineer's request about the filler infeed conveyor."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1-5 cover diagnosis (equipment_kb, sensor_history, maintenance_history, manual_search) and calls 6-8 cover parts and repair history needed for the fix."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-002",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target RINSE-PUMP using tools appropriate to each agent's role, matching the engineer's described issue."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 The engineer asked about parts availability, but no parts_inventory call was made to check quantity on hand for the repair parts."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-003",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target the FILLER machine or a plausibly related part (CAP-FILLER-KIT), consistent with the engineer's question."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 6 checks parts_inventory for the repair part's lead time, directly addressing whether it can wait until the planned stop, alongside diagnostics covering the fault itself."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-004",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all three calls target AIR-COMP, matching the engineer's request, using tools within the diagnostics agent's roster."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 the calls cover equipment_kb, sensor_history, and maintenance_history for AIR-COMP, matching the routine check request"
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-005",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target machine_id='BLOWER', consistent with the air-knife blower the engineer asked about."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1-4 cover nameplate/alarm limits, trend data, history, and manual criteria for vibration/balancing \u2014 the full set needed to answer the rebalance question."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-006",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target CONVEYOR or BLOWER, matching the two machines the engineer asked about, using tools within the diagnostics agent's roster."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 both machines (CONVEYOR and BLOWER) were checked with equipment_kb, sensor_history, and maintenance_history, covering what's needed to compare their conditions and prioritize attention."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-007",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target CONVEYOR consistent with Line 3 infeed vibration complaint, and part lookup follows the bearing wear vibration finding."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 the calls cover equipment data, sensor trends, maintenance history, manual guidance, and parts availability for the vibrating conveyor, addressing diagnosis and repair needs."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-008",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": null,
+     "comment": "INSUFFICIENT-EVIDENCE \u2014 no tool calls were made, so there is nothing to evaluate for correctness of targeting or tool choice."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 0,
+     "comment": "UNSOUND \u2014 no tool calls were made at all, so nothing about the Line 4 gearbox overcurrent was investigated."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-009",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 uses manual_search pointed at BLOWER for the balance criterion spec, matching exactly what the engineer asked for."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 directly searches the manual for the balance criterion spec, matching the engineer's narrow request for just the spec without diagnosis."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-010",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 targets parts_inventory(part_no='DC-BUS-CAP-90KW-FILLER'), directly matching the engineer's request about the DC-bus capacitor kit."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 and call 2 both query parts_inventory, directly addressing stock and cost of the capacitor kit as asked."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-011",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target CONVEYOR, matching the engineer's question about the filler infeed conveyor."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 3 checks maintenance_history(machine_id='CONVEYOR'), which covers past work orders needed to compare against last September's failure."
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-012",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target AIR-COMP, the machine the engineer asked about, using appropriate tools within each agent's allowed roster."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 The calls cover the alarm limits (manual_search, equipment_kb), current trend (sensor_history), and past history (maintenance_history) needed to judge whether 88 C requires action."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-001",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target the CONVEYOR or a related part number (SKF-6208), consistent with the engineer's request; call 7 uses a descriptive alias of the same conveyor rather than a different machine."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 calls cover equipment_kb, sensor_history, maintenance_history, manual_search, and parts_inventory for CONVEYOR, addressing diagnosis and remedy."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-002",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target RINSE-PUMP using tools appropriate to their roster (equipment_kb, sensor_history, maintenance_history, manual_search)."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 0,
+     "comment": "UNSOUND \u2014 the engineer asked whether they have the parts to fix it, but parts_inventory was never called."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-003",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target FILLER machine or a related part kit consistent with the overcurrent trip investigation."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 calls cover equipment_kb, sensor_history, maintenance_history, manual_search, and parts_inventory for FILLER, addressing both the fault diagnosis and whether waiting is feasible (parts_inventory check)."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-004",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all three calls target AIR-COMP, matching the engineer's request, using tools within the diagnostics agent's allowed roster."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call sequence covers equipment_kb, sensor_history, and maintenance_history for AIR-COMP, matching a routine check request."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-005",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target machine_id='BLOWER', consistent with the air-knife blower the engineer asked about."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1-4 cover equipment specs, sensor trend, history, and manual criteria for vibration/balancing on BLOWER, matching the engineer's question."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-006",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 0,
+     "comment": "UNSOUND \u2014 calls 7-9 use machine_id='BLOWER', a machine the engineer did not ask about (they asked about the air-knife blower, already covered in calls 4-6)."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 both machines (conveyor and air-knife blower) had equipment_kb, sensor_history, and maintenance_history called, covering the comparison needed to prioritize attention."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-007",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target CONVEYOR (Line 3 infeed) or an inferred bearing part number, consistent with the engineer's request."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 The calls cover equipment_kb, sensor_history, maintenance_history, manual_search, and parts_inventory for CONVEYOR, addressing diagnosis, history, repair procedure, and parts availability for the vibration complaint."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-008",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": null,
+     "comment": "INSUFFICIENT-EVIDENCE \u2014 no tool calls were made, so there is nothing to judge as pointed correctly or incorrectly"
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 no tool calls were made, but nothing in the roster or tools is shown to have been misapplied \u2014 however, absent any lookups at all for a diagnostic question, there is nothing to point to as a specific unsound call, only a total absence of investigation."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-009",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 uses manual_search aimed at the balance criterion spec for the blower, matching exactly what the engineer asked for."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 directly searches the manuals for the balance criterion specification on the blower, matching the engineer's spec-only request."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-010",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 both calls use parts_inventory (in the maintenance agent's roster) to look up the DC-bus capacitor kit the engineer asked about, with no unrelated machines or parts involved."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 and call 2 both query parts_inventory, which directly answers stock and cost for the capacitor kit."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-011",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target CONVEYOR, matching the engineer's request about the filler infeed conveyor."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 3 checks maintenance_history(machine_id='CONVEYOR'), which covers past work orders needed to compare against last September's failure."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-012",
+   "rep": 1,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target AIR-COMP, matching the machine the engineer asked about, using appropriate tools within each agent's roster."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 checks equipment_kb for alarm limits, and call 4 cross-checks manual for discharge temperature limit, directly answering the question."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-001",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target CONVEYOR (or its bearing part SKF-6208 identified during diagnosis), consistent with the engineer's reported issue."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 diagnostics gathered equipment_kb, sensor_history, and maintenance_history for CONVEYOR, documentation searched manuals for the bearing issue, and maintenance checked parts_inventory for the likely replacement part."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-002",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target RINSE-PUMP using tools within each agent's allowed roster and appropriate to their function."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 0,
+     "comment": "UNSOUND \u2014 The engineer asked \"Do we have the parts to fix it?\" but parts_inventory was never called."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-003",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target FILLER machine or its related capacitor kit part, consistent with the engineer's question."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 5 checks parts_inventory for the capacitor kit, directly answering whether the repair (and thus waiting until the planned stop) is feasible."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-004",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target AIR-COMP, matching the engineer's request, using tools within the diagnostics agent's roster."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1-3 cover equipment_kb, sensor_history, and maintenance_history for AIR-COMP, matching a routine check request."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-005",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target machine_id='BLOWER', matching the air-knife blower the engineer asked about, and each tool is used for its intended purpose."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1-4 cover nameplate/alarm limits, trend data, past work orders, and manual balance criteria for the BLOWER machine in question."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-006",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target CONVEYOR or BLOWER, matching the two machines the engineer asked about, using tools within the diagnostics agent's allowed roster."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 both machines named in the request (CONVEYOR and BLOWER) got equipment_kb, sensor_history, and maintenance_history calls, covering comparison needed to prioritize."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-007",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target the CONVEYOR machine or a bearing part discovered via diagnostics, consistent with the Line 3 infeed vibration complaint."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 the calls cover equipment_kb, sensor_history, maintenance_history, manual_search, and parts_inventory for CONVEYOR, addressing diagnosis, repair procedure, and parts availability for the vibration complaint."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-008",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 0,
+     "comment": "UNSOUND \u2014 call 1 looks up machine_id='CONVEYOR' but the engineer asked about the Line 4 gearbox."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 looks up machine_id='CONVEYOR' but the engineer asked about the Line 4 gearbox."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-009",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 uses manual_search to find the balance criterion specification for the air-knife blower, matching the engineer's request."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 The request asks purely for a spec, and manual_search was called with the relevant query and machine to look up that specification."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-010",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": null,
+     "comment": "INSUFFICIENT-EVIDENCE \u2014 the engineer only asked about \"a DC-bus capacitor kit\" without naming a part number, so it cannot be determined whether 'FILLER-VFD90-DCBUS-KIT' or 'CAP-FILLER-KIT' correctly refers to that kit."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 and call 2 both query parts_inventory, directly addressing stock and cost of the capacitor kit."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-011",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all three calls target machine_id='CONVEYOR', matching the engineer's question about the filler infeed conveyor and its past failure history."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 3 checks maintenance_history(machine_id='CONVEYOR'), which is exactly what's needed to compare against last September's failure."
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-012",
+   "rep": 2,
+   "phase": "judge_live",
+   "verdicts": {
+    "tool_fit": {
+     "key": "tool_fit",
+     "score": 1,
+     "comment": "SOUND \u2014 all calls target AIR-COMP, the machine the engineer asked about, using tools appropriate to each agent's role."
+    },
+    "search_sufficiency": {
+     "key": "search_sufficiency",
+     "score": 1,
+     "comment": "SOUND \u2014 call 1 retrieves equipment_kb alarm limits for AIR-COMP, directly answering whether 88 C is within limits."
+    }
+   }
+  }
+ ],
+ "complete": true
+}

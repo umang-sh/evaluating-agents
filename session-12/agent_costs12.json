@@ -1,0 +1,1140 @@
+{
+ "phase": "agent_costs",
+ "generated": "2026-09-29T08:56:31.900423+00:00",
+ "check": "sum of agents' tokens within 2% of the root",
+ "runs": [
+  {
+   "version": "A",
+   "row_id": "HW-001",
+   "rep": 1,
+   "trace_id": "01a0d81c-5ef4-7413-b3fe-f922b0d11211",
+   "root_tokens": 16916,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1480,
+     "cost_usd": 0.00532
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4730,
+     "cost_usd": 0.013676
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 4535,
+     "cost_usd": 0.013846
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 6171,
+     "cost_usd": 0.016694
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-002",
+   "rep": 1,
+   "trace_id": "01a0d81d-c3cc-7782-a7b2-809c139917a6",
+   "root_tokens": 11340,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1426,
+     "cost_usd": 0.004804
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4660,
+     "cost_usd": 0.013136
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 3642,
+     "cost_usd": 0.00998
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 1612,
+     "cost_usd": 0.005384
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-003",
+   "rep": 1,
+   "trace_id": "01a0d81e-fdda-72b1-843b-139806cf30eb",
+   "root_tokens": 16167,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1418,
+     "cost_usd": 0.004764
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4456,
+     "cost_usd": 0.01252
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 6632,
+     "cost_usd": 0.017344
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 3661,
+     "cost_usd": 0.011026
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-004",
+   "rep": 1,
+   "trace_id": "01a0d820-64f7-7fd2-a785-5fdff3ed64b7",
+   "root_tokens": 5683,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1283,
+     "cost_usd": 0.003518
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4400,
+     "cost_usd": 0.012088
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-005",
+   "rep": 1,
+   "trace_id": "01a0d821-7bac-77a1-9da5-19b817cf4320",
+   "root_tokens": 13310,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1441,
+     "cost_usd": 0.00493
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4510,
+     "cost_usd": 0.012972
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 5818,
+     "cost_usd": 0.015332
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 1541,
+     "cost_usd": 0.004818
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-006",
+   "rep": 1,
+   "trace_id": "01a0d822-c454-7953-a853-b9d3b1765463",
+   "root_tokens": 14253,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1339,
+     "cost_usd": 0.003918
+    },
+    "diagnostics": {
+     "calls": 2,
+     "tokens": 12914,
+     "cost_usd": 0.035628
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-007",
+   "rep": 1,
+   "trace_id": "01a0d824-13a1-7c13-9b49-4a2b0ac3cbf6",
+   "root_tokens": 17071,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1457,
+     "cost_usd": 0.005218
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4637,
+     "cost_usd": 0.013154
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 4372,
+     "cost_usd": 0.012456
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 6605,
+     "cost_usd": 0.01969
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-008",
+   "rep": 1,
+   "trace_id": "01a0d825-7153-7800-be6d-9d7b79938e5f",
+   "root_tokens": 3051,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1291,
+     "cost_usd": 0.003566
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 1760,
+     "cost_usd": 0.004744
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-009",
+   "rep": 1,
+   "trace_id": "01a0d826-7d96-74f0-a6cd-3785a7a0ae8c",
+   "root_tokens": 4292,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1281,
+     "cost_usd": 0.003394
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 3011,
+     "cost_usd": 0.008342
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-010",
+   "rep": 1,
+   "trace_id": "01a0d827-8c3d-7593-be04-fd9ea940f423",
+   "root_tokens": 5496,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1279,
+     "cost_usd": 0.003414
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 4217,
+     "cost_usd": 0.011218
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-011",
+   "rep": 1,
+   "trace_id": "01a0d828-a614-7172-b6c9-c003c64fb3d9",
+   "root_tokens": 5865,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1275,
+     "cost_usd": 0.003422
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4590,
+     "cost_usd": 0.012684
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-012",
+   "rep": 1,
+   "trace_id": "01a0d829-b693-7152-bf21-1381fbb29683",
+   "root_tokens": 10419,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1430,
+     "cost_usd": 0.004916
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4543,
+     "cost_usd": 0.012222
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 2910,
+     "cost_usd": 0.007396
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 1536,
+     "cost_usd": 0.004752
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-001",
+   "rep": 2,
+   "trace_id": "01a0d82a-ee38-7e82-9a32-4c74f2b8233f",
+   "root_tokens": 17012,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1490,
+     "cost_usd": 0.00542
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4778,
+     "cost_usd": 0.014028
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 4495,
+     "cost_usd": 0.013094
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 6249,
+     "cost_usd": 0.017706
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-002",
+   "rep": 2,
+   "trace_id": "01a0d82c-66fb-73d1-b2e4-637091886b21",
+   "root_tokens": 11419,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1431,
+     "cost_usd": 0.004854
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4658,
+     "cost_usd": 0.013404
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 3739,
+     "cost_usd": 0.010246
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 1591,
+     "cost_usd": 0.004998
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-003",
+   "rep": 2,
+   "trace_id": "01a0d82d-a6f4-7042-abff-197fdcef7dac",
+   "root_tokens": 15213,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1407,
+     "cost_usd": 0.004654
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4440,
+     "cost_usd": 0.012408
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 5941,
+     "cost_usd": 0.01573
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 3425,
+     "cost_usd": 0.01061
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-004",
+   "rep": 2,
+   "trace_id": "01a0d82f-0817-73a0-bb98-414a9840905e",
+   "root_tokens": 5727,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1291,
+     "cost_usd": 0.003598
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4436,
+     "cost_usd": 0.012224
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-005",
+   "rep": 2,
+   "trace_id": "01a0d830-2279-71b0-8e6b-7323d930762f",
+   "root_tokens": 11103,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1446,
+     "cost_usd": 0.00498
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4508,
+     "cost_usd": 0.012704
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 3578,
+     "cost_usd": 0.009884
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 1571,
+     "cost_usd": 0.004886
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-006",
+   "rep": 2,
+   "trace_id": "01a0d831-6d29-74e2-8adb-6c05c0a0750a",
+   "root_tokens": 11187,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1357,
+     "cost_usd": 0.004098
+    },
+    "diagnostics": {
+     "calls": 2,
+     "tokens": 9830,
+     "cost_usd": 0.0277
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-007",
+   "rep": 2,
+   "trace_id": "01a0d832-d4d2-78d0-9068-8c23e26fe40e",
+   "root_tokens": 13756,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1455,
+     "cost_usd": 0.005198
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4537,
+     "cost_usd": 0.012202
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 4245,
+     "cost_usd": 0.01277
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 3519,
+     "cost_usd": 0.009566
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-008",
+   "rep": 2,
+   "trace_id": "01a0d837-f5c7-7b71-a21c-b4344681e558",
+   "root_tokens": 3114,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1357,
+     "cost_usd": 0.004226
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 1757,
+     "cost_usd": 0.004738
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-009",
+   "rep": 2,
+   "trace_id": "01a0d838-ff59-7252-996a-819a9b098fba",
+   "root_tokens": 4237,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1272,
+     "cost_usd": 0.003304
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 2965,
+     "cost_usd": 0.007994
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-010",
+   "rep": 2,
+   "trace_id": "01a0d83a-17ea-7612-83a9-0131a3a90367",
+   "root_tokens": 5548,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1286,
+     "cost_usd": 0.003484
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 4262,
+     "cost_usd": 0.011484
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-011",
+   "rep": 2,
+   "trace_id": "01a0d83b-4b26-71b1-88a2-1caa4de4f8d4",
+   "root_tokens": 5959,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1268,
+     "cost_usd": 0.003352
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4691,
+     "cost_usd": 0.01335
+    }
+   }
+  },
+  {
+   "version": "A",
+   "row_id": "HW-012",
+   "rep": 2,
+   "trace_id": "01a0d83c-9065-7aa3-bdbe-5f9f5f5835a1",
+   "root_tokens": 10380,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1409,
+     "cost_usd": 0.004706
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4541,
+     "cost_usd": 0.012426
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 2899,
+     "cost_usd": 0.00735
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 1531,
+     "cost_usd": 0.004542
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-001",
+   "rep": 1,
+   "trace_id": "01a0ec4c-11aa-7de2-92aa-4048ee3f3f3e",
+   "root_tokens": 18836,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1544,
+     "cost_usd": 0.005112
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4682,
+     "cost_usd": 0.013388
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 6639,
+     "cost_usd": 0.017782
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 5971,
+     "cost_usd": 0.016758
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-002",
+   "rep": 1,
+   "trace_id": "01a0ec4c-b93a-78c2-ae60-66f8c7479f8e",
+   "root_tokens": 11465,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1526,
+     "cost_usd": 0.004956
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4682,
+     "cost_usd": 0.013612
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 3734,
+     "cost_usd": 0.009876
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 1523,
+     "cost_usd": 0.004678
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-003",
+   "rep": 1,
+   "trace_id": "01a0ec4d-5165-7633-afc1-308582adeac3",
+   "root_tokens": 15767,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1535,
+     "cost_usd": 0.005086
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4593,
+     "cost_usd": 0.013362
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 5918,
+     "cost_usd": 0.015732
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 3721,
+     "cost_usd": 0.01149
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-004",
+   "rep": 1,
+   "trace_id": "01a0ec4d-fab4-7b02-946d-7c33267d95be",
+   "root_tokens": 5700,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1366,
+     "cost_usd": 0.0035
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4334,
+     "cost_usd": 0.011716
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-005",
+   "rep": 1,
+   "trace_id": "01a0ec4e-487a-7191-ab63-9107160fb054",
+   "root_tokens": 9687,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1484,
+     "cost_usd": 0.004512
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4594,
+     "cost_usd": 0.013436
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 3609,
+     "cost_usd": 0.009362
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-006",
+   "rep": 1,
+   "trace_id": "01a0ec4e-bdad-7af3-af5b-a367d02c0179",
+   "root_tokens": 14395,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1449,
+     "cost_usd": 0.00417
+    },
+    "diagnostics": {
+     "calls": 2,
+     "tokens": 12946,
+     "cost_usd": 0.035524
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-007",
+   "rep": 1,
+   "trace_id": "01a0ec4f-4566-7a51-b586-b88fe566b3ba",
+   "root_tokens": 16724,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1531,
+     "cost_usd": 0.00511
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4797,
+     "cost_usd": 0.014314
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 6490,
+     "cost_usd": 0.017548
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 3906,
+     "cost_usd": 0.011388
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-008",
+   "rep": 1,
+   "trace_id": "01a0ec4f-f293-7612-b321-a8ca8ae038e2",
+   "root_tokens": 3313,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1442,
+     "cost_usd": 0.004228
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 1871,
+     "cost_usd": 0.005678
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-009",
+   "rep": 1,
+   "trace_id": "01a0ec50-5367-7da0-b323-dbaf867a6665",
+   "root_tokens": 4361,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1385,
+     "cost_usd": 0.003586
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 2976,
+     "cost_usd": 0.00796
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-010",
+   "rep": 1,
+   "trace_id": "01a0ec50-aa70-7b83-8957-892915081b7d",
+   "root_tokens": 5623,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1386,
+     "cost_usd": 0.003636
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 4237,
+     "cost_usd": 0.011234
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-011",
+   "rep": 1,
+   "trace_id": "01a0ec51-10cb-7290-8cd1-9fa03bf80572",
+   "root_tokens": 6030,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1375,
+     "cost_usd": 0.003574
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4655,
+     "cost_usd": 0.012998
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-012",
+   "rep": 1,
+   "trace_id": "01a0ec51-6aa6-7e12-aae4-38c9ce24c552",
+   "root_tokens": 9314,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1453,
+     "cost_usd": 0.004298
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4445,
+     "cost_usd": 0.012498
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 3416,
+     "cost_usd": 0.008824
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-001",
+   "rep": 2,
+   "trace_id": "01a0ec51-dbf4-7e20-b50b-2cf359ffcc09",
+   "root_tokens": 14117,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1542,
+     "cost_usd": 0.005092
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4663,
+     "cost_usd": 0.013318
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 4459,
+     "cost_usd": 0.013134
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 3453,
+     "cost_usd": 0.009706
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-002",
+   "rep": 2,
+   "trace_id": "01a0ec52-5c97-7151-9315-795c681817f5",
+   "root_tokens": 11091,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1500,
+     "cost_usd": 0.004696
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4609,
+     "cost_usd": 0.012898
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 3526,
+     "cost_usd": 0.009204
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 1456,
+     "cost_usd": 0.00432
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-003",
+   "rep": 2,
+   "trace_id": "01a0ec52-bb3f-7633-a249-009bc14e282c",
+   "root_tokens": 13447,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1517,
+     "cost_usd": 0.004906
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4507,
+     "cost_usd": 0.012806
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 3680,
+     "cost_usd": 0.01008
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 3743,
+     "cost_usd": 0.011894
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-004",
+   "rep": 2,
+   "trace_id": "01a0ec53-567e-7530-9e55-4791c3fa0c64",
+   "root_tokens": 5755,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1375,
+     "cost_usd": 0.00359
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4380,
+     "cost_usd": 0.012032
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-005",
+   "rep": 2,
+   "trace_id": "01a0ec53-970a-74a0-8673-6ae29adc63cd",
+   "root_tokens": 9418,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1460,
+     "cost_usd": 0.004272
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4457,
+     "cost_usd": 0.012546
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 3501,
+     "cost_usd": 0.00913
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-006",
+   "rep": 2,
+   "trace_id": "01a0ec53-f9eb-7a01-a474-3afa8382ae3e",
+   "root_tokens": 11113,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1463,
+     "cost_usd": 0.00431
+    },
+    "diagnostics": {
+     "calls": 2,
+     "tokens": 9650,
+     "cost_usd": 0.026604
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-007",
+   "rep": 2,
+   "trace_id": "01a0ec54-531b-76d2-b705-786d2b830152",
+   "root_tokens": 13366,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1526,
+     "cost_usd": 0.00506
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4614,
+     "cost_usd": 0.012988
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 3665,
+     "cost_usd": 0.009786
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 3561,
+     "cost_usd": 0.010426
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-008",
+   "rep": 2,
+   "trace_id": "01a0ec54-da8d-7f02-8720-93de3669861b",
+   "root_tokens": 6530,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1526,
+     "cost_usd": 0.005068
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 5004,
+     "cost_usd": 0.015032
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-009",
+   "rep": 2,
+   "trace_id": "01a0ec55-3531-7d51-9da6-6408d4743315",
+   "root_tokens": 4357,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1386,
+     "cost_usd": 0.003596
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 2971,
+     "cost_usd": 0.007894
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-010",
+   "rep": 2,
+   "trace_id": "01a0ec55-74de-72c1-a21c-f88294387969",
+   "root_tokens": 5774,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1377,
+     "cost_usd": 0.003546
+    },
+    "maintenance": {
+     "calls": 1,
+     "tokens": 4397,
+     "cost_usd": 0.011946
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-011",
+   "rep": 2,
+   "trace_id": "01a0ec55-c4d1-70a2-9429-e3c6fc32c390",
+   "root_tokens": 5985,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1371,
+     "cost_usd": 0.003534
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4614,
+     "cost_usd": 0.012844
+    }
+   }
+  },
+  {
+   "version": "B",
+   "row_id": "HW-012",
+   "rep": 2,
+   "trace_id": "01a0ec56-2940-7652-9ec6-8523b88adee0",
+   "root_tokens": 9141,
+   "agents": {
+    "planner": {
+     "calls": 1,
+     "tokens": 1444,
+     "cost_usd": 0.004208
+    },
+    "diagnostics": {
+     "calls": 1,
+     "tokens": 4347,
+     "cost_usd": 0.011782
+    },
+    "documentation": {
+     "calls": 1,
+     "tokens": 3350,
+     "cost_usd": 0.008852
+    }
+   }
+  }
+ ],
+ "left_out": []
+}
