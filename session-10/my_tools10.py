@@ -101,12 +101,12 @@ WORKED_EXAMPLE = {
 MY_ROW_1 = {
     "id": "HW-003",
     "must_call": {
-        # "agent": {"tool", "tool"},
+        "diagnostics": {"sensor_history", "equipment_kb"},
+        "documentation": {"manual_search"},
+        "maintenance": {"parts_inventory"},
     },
     "forbidden": {},
-    "must_cover": {
-        # "machine_id": ["..."],
-    },
+    "must_cover": {"machine_id": ["RINSE-PUMP"]},
     "match_mode": "subset",
 }
 
