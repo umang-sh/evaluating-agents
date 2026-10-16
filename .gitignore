@@ -94,3 +94,6 @@ deck_numbers10_NOGO.json
 # and [VERDICTS_REVEAL] cells read it, and beat 5 of the hands-on is nothing without
 # it. Same reasoning as traj_runs9.json and judge_runs8.json above.
 build_form10.gs
+
+# End-term assessment instructor-only (never commit -- these are the answer keys)
+endterm/INSTRUCTOR_*
