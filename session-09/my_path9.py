@@ -100,12 +100,12 @@ from __future__ import annotations
 # and shows the reasoning that produces each answer.
 # ===========================================================================
 PREDICT: dict[str, tuple] = {
-    "A": (None, None),
-    "B": (None, None),
-    "C": (None, None),
-    "D": (None, None),
-    "E": (None, None),
-    "F": (None, None),
+    "A": ("UNSOUND", "efficiency"),
+    "B": ("UNSOUND", "handoff"),
+    "C": ("SOUND", None),
+    "D": ("UNSOUND", "delegation"),
+    "E": ("UNSOUND", "handoff"),
+    "F": ("UNSOUND", "efficiency"),
 }
 
 # ===========================================================================
@@ -125,8 +125,8 @@ PREDICT: dict[str, tuple] = {
 # agents exist.
 # ===========================================================================
 MY_KEY: dict[str, list] = {
-    "HW-004": None,
-    "HW-012": None,
+    "HW-004": ["planner", "diagnostics"],
+    "HW-012": ["planner", "diagnostics", "documentation"],
 }
 
 

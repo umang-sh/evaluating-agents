@@ -58,7 +58,7 @@ def validate_legal(legal):
     bad = [k for k in legal if k not in known]
     for k, v in legal.items():
         bad += [f"{k} -> {x}" for x in v if x not in known]
-    return bad
+    return bad  
 
 
 def screen_check(name, fn, clean, real):
